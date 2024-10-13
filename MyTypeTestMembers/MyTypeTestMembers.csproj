@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ArgsArrays\ArgsArrays.csproj" />
     <ProjectReference Include="..\SampleTypes\SampleTypes.csproj" />
   </ItemGroup>
 

@@ -1,8 +1,14 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeStaticDataTests : TestMembers_MSTest
+public sealed class MyTypeStaticDataTests : GeneralTestMembers
 {
+    [TestInitialize]
+    public void InitMyTypeTests()
+    {
+        InitMyType();
+    }
+
     #region GetHashCode()
 
     [TestMethod]
@@ -13,9 +19,9 @@ public sealed class MyTypeStaticDataTests : TestMembers_MSTest
     {
         // Arrange
         _other = new(quantity, label);
+        InitHashCodes(_other);
 
         // Act
-        InitHashCodes(_other);
         var actual = _hashCode1 == _hashCode2;
 
         // Assert

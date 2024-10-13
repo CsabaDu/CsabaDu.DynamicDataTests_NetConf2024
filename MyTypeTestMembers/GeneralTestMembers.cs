@@ -1,5 +1,3 @@
-using CsabaDu.DynamicDataTests_NetConf2024.SampleTypes;
-
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTestMembers;
 
 public abstract class GeneralTestMembers

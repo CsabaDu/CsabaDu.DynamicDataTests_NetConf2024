@@ -1,8 +1,14 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeSimpleTests : TestMembers_MSTest
+public sealed class MyTypeSimpleTests : GeneralTestMembers
 {
+    [TestInitialize]
+    public void InitMyTypeTests()
+    {
+        InitMyType();
+    }
+
     #region Equals(object?)
 
     [TestMethod]
