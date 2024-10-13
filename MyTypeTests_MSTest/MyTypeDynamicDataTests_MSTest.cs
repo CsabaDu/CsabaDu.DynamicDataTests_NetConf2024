@@ -54,8 +54,8 @@ public sealed class MyTypeDynamicDataTests_MSTest : NonDynamicTestMembers
     public void GetHashCode_returns_expected(string testCase, bool expected, MyType other)
     {
         // Arrange
-        _other = other;
-        InitHashCodes();
+        _hashCode1 = _myType.GetHashCode();
+        _hashCode2 = other.GetHashCode();
 
         // Act
         var actual = _hashCode1 == _hashCode2;
@@ -104,8 +104,6 @@ public sealed class MyTypeDynamicDataTests_MSTest : NonDynamicTestMembers
 
     private IEnumerable<object[]> GetGetHashCodeArgs()
     {
-        //InitMyType();
-
         _testCase = "Different Quantity, same Label => false";
         _quantity = DifferentQuantity;
         _label = TestLabel;
@@ -137,8 +135,6 @@ public sealed class MyTypeDynamicDataTests_MSTest : NonDynamicTestMembers
 
     private IEnumerable<object[]> GetEqualsMyTypeArgs()
     {
-        InitMyType();
-
         _testCase = "null => false";
         _other = null;
         _expected = false;

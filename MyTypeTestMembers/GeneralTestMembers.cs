@@ -17,16 +17,16 @@ public abstract class GeneralTestMembers
     protected int _hashCode1;
     protected int _hashCode2;
 
-    protected MyType GetMyType()
-    {
-        return new(_quantity, _label);
-    }
-
     protected void InitMyType()
     {
         _quantity = TestQuantity;
         _label = TestLabel;
 
         _myType = GetMyType();
+    }
+
+    protected MyType GetMyType()
+    {
+        return new(_quantity, _label);
     }
 }

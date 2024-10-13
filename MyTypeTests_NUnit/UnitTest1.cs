@@ -1,4 +1,4 @@
-namespace CCsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit
+namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit
 {
     public class Tests
     {
