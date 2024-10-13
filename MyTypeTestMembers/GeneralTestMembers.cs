@@ -29,4 +29,10 @@ public abstract class GeneralTestMembers
     {
         return new(_quantity, _label);
     }
+
+    protected void InitHashCodes(MyType other)
+    {
+        _hashCode1 = _myType.GetHashCode();
+        _hashCode2 = other.GetHashCode();
+    }
 }

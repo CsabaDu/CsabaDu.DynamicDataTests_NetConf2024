@@ -1,7 +1,7 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeSimpleTests : NonDynamicTestMembers
+public sealed class MyTypeSimpleTests : TestMembers_MSTest
 {
     #region Equals(object?)
 
@@ -129,7 +129,7 @@ public sealed class MyTypeSimpleTests : NonDynamicTestMembers
         _other = GetMyType();
 
         // Act
-        InitHashCodes();
+        InitHashCodes(_other);
 
         // Assert
         Assert.AreNotEqual(_hashCode1, _hashCode2);
@@ -143,7 +143,7 @@ public sealed class MyTypeSimpleTests : NonDynamicTestMembers
         _other = GetMyType();
 
         // Act
-        InitHashCodes();
+        InitHashCodes(_other);
 
         // Assert
         Assert.AreNotEqual(_hashCode1, _hashCode2);
@@ -156,7 +156,7 @@ public sealed class MyTypeSimpleTests : NonDynamicTestMembers
         _other = GetMyType();
 
         // Act
-        InitHashCodes();
+        InitHashCodes(_other);
 
         // Assert
         Assert.AreEqual(_hashCode1, _hashCode2);

@@ -1,7 +1,7 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeDynamicDataTests_MSTest : NonDynamicTestMembers
+public sealed class MyTypeDynamicDataTests_MSTest : TestMembers_MSTest
 {
     #region Dynamic test members
     private string _testCase;
@@ -54,8 +54,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : NonDynamicTestMembers
     public void GetHashCode_returns_expected(string testCase, bool expected, MyType other)
     {
         // Arrange
-        _hashCode1 = _myType.GetHashCode();
-        _hashCode2 = other.GetHashCode();
+        InitHashCodes(other);
 
         // Act
         var actual = _hashCode1 == _hashCode2;

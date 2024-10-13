@@ -9,13 +9,10 @@
             TestCase = testCase;
         }
 
-        public virtual object[] ToObjectArray()
+        public virtual object[] ToObjectArray() => new object[]
         {
-            return new object[]
-            {
-                TestCase,
-            };
-        }
+            TestCase,
+        };
     }
 
     public record TestCase_bool_: ArgsArray_
@@ -27,14 +24,11 @@
             IsTrue = isTrue;
         }
 
-        public override object[] ToObjectArray()
+        public override object[] ToObjectArray() => new object[]
         {
-            return new object[]
-            {
-                TestCase,
-                IsTrue,
-            };
-        }
+            TestCase,
+            IsTrue,
+        };
     }
 
     public record TestCase_bool_MyType_MyType_ : TestCase_bool_
@@ -46,15 +40,12 @@
             Other = other;
         }
 
-        public override object[] ToObjectArray()
+        public override object[] ToObjectArray() => new object[]
         {
-            return new object[]
-            {
-                TestCase,
-                IsTrue,
-                Other,
-            };
-        }
+            TestCase,
+            IsTrue,
+            Other,
+        };
     }
 
     public record TestCase_bool_MyType_object_ : TestCase_bool_
@@ -66,14 +57,11 @@
             Obj = obj;
         }
 
-        public override object[] ToObjectArray()
+        public override object[] ToObjectArray() => new object[]
         {
-            return new object[]
-            {
-                TestCase,
-                IsTrue,
-                Obj,
-            };
-        }
+            TestCase,
+            IsTrue,
+            Obj,
+        };
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeStaticDataTests : NonDynamicTestMembers
+public sealed class MyTypeStaticDataTests : TestMembers_MSTest
 {
     #region GetHashCode()
 
@@ -15,7 +15,7 @@ public sealed class MyTypeStaticDataTests : NonDynamicTestMembers
         _other = new(quantity, label);
 
         // Act
-        InitHashCodes();
+        InitHashCodes(_other);
         var actual = _hashCode1 == _hashCode2;
 
         // Assert
@@ -74,13 +74,13 @@ public sealed class MyTypeStaticDataTests : NonDynamicTestMembers
     private static readonly MyType SameMyType = new(TestQuantity, TestLabel);
     private static readonly MyType DifferentQuantityMyType = new(DifferentQuantity, TestLabel);
     private static readonly MyType DifferentLabelMyType = new(TestQuantity, DifferentLabel);
-    private static readonly MyType NullMyType;
+    private static readonly MyType NullMyType = null;
 
     [TestMethod]
-    [DataRow(true, nameof(SameMyType), DisplayName = "Same MyType => true")]
+    [DataRow(false, nameof(NullMyType), DisplayName = "null => false")]
     [DataRow(false, nameof(DifferentQuantityMyType), DisplayName = "Different Quantity => false")]
     [DataRow(false, nameof(DifferentLabelMyType), DisplayName = "Different Label => false")]
-    [DataRow(false, nameof(NullMyType), DisplayName = "null => false")]
+    [DataRow(true, nameof(SameMyType), DisplayName = "Same MyType => true")]
     public void Equals_MyType_returns_expected(bool expected, string otherName)
     {
         // Arrange
