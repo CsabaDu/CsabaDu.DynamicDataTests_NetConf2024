@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ArgsArrays\ArgsArrays.csproj" />
-    <ProjectReference Include="..\MyTypeTestMembers\MyTypeTestMembers.csproj" />
+    <ProjectReference Include="..\TestMembers\TestMembers.csproj" />
   </ItemGroup>
 
   <ItemGroup>
