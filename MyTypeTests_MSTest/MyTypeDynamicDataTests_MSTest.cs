@@ -22,7 +22,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
         string testMethodName = testMethod.Name;
         string testCase = (string)argsArray[0];
 
-        return DataSources.CreateDisplayName(testMethodName, argsArray);
+        return CreateDisplayName(testMethodName, argsArray);
     }
     #endregion
 

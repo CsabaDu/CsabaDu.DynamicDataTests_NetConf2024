@@ -20,7 +20,7 @@ public class MyTypeDynamicDataTests_NUnit : DynamicDataSources
     {
         foreach (object[] argsArray in argsArraysList)
         {
-            string displayName = DataSources.CreateDisplayName(testMethodName, argsArray);
+            string displayName = CreateDisplayName(testMethodName, argsArray);
             TestCaseData testCaseData = new(argsArray[1..]);
 
             yield return testCaseData.SetName(displayName);
