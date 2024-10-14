@@ -1,4 +1,6 @@
-﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
 public sealed class MyTypeStaticDataTests : GeneralTestMembers
@@ -8,7 +10,6 @@ public sealed class MyTypeStaticDataTests : GeneralTestMembers
     {
         InitMyType();
     }
-
     #region GetHashCode()
 
     [TestMethod]

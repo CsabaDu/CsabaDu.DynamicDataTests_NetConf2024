@@ -10,19 +10,19 @@ public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
     }
 
     #region Dynamic test members
-    private static readonly CsabaDu.DynamicDataTests_NetConf2024.MyTypeTestMembers.DynamicDataSources DynamicDataSources = new();
+    private static readonly DynamicDataSources DataSources = new();
     private const string DisplayName = nameof(GetDisplayName);
 
-    private static IEnumerable<object[]> EqualsMyTypeArgs => DynamicDataSources.GetEqualsMyTypeArgs();
-    private static IEnumerable<object[]> EqualsObjectArgs => DynamicDataSources.GetEqualsObjectArgs();
-    private static IEnumerable<object[]> GetHashCodeArgs => DynamicDataSources.GetGetHashCodeArgs();
+    private static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs();
+    private static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs();
+    private static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs();
 
     public static string GetDisplayName(MethodInfo testMethod, object[] argsArray)
     {
         string testMethodName = testMethod.Name;
         string testCase = (string)argsArray[0];
 
-        return $"{testMethodName}: {testCase}";
+        return DataSources.CreateDisplayName(testMethodName, argsArray);
     }
     #endregion
 
@@ -30,7 +30,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
 
     [TestMethod]
     [DynamicData(nameof(EqualsObjectArgs), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
-    public void Equals_arg_object_returns_expected(string testCase, bool expected, object obj)
+    public void MSTest_Equals_arg_object_returns_expected(string testCase, bool expected, object obj)
     {
         // Arrange
         // Act
@@ -42,7 +42,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
 
     [TestMethod]
     [DynamicData(nameof(EqualsMyTypeArgs), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
-    public void Equals_arg_MyType_returns_expected(string testCase, bool expected, MyType other)
+    public void MSTest_Equals_arg_MyType_returns_expected(string testCase, bool expected, MyType other)
     {
         // Arrange
         // Act
@@ -54,7 +54,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
 
     [TestMethod]
     [DynamicData(nameof(GetHashCodeArgs), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
-    public void GetHashCode_returns_expected(string testCase, bool expected, MyType other)
+    public void MSTest_GetHashCode_returns_expected(string testCase, bool expected, MyType other)
     {
         // Arrange
         InitHashCodes(other);
