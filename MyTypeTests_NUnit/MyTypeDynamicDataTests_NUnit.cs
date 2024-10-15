@@ -64,7 +64,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : DynamicDataSources
         // Act
         var actual = _hashCode1 == _hashCode2;
 
-        // Act
+        // Assert
         Assert.That(actual, Is.EqualTo(expected));
     }
     #endregion
