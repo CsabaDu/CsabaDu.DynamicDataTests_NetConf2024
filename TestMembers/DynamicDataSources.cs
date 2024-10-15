@@ -7,7 +7,7 @@ public class DynamicDataSources : GeneralTestMembers
     private string _testCase;
     private bool _expected;
 
-    public static string CreateDisplayName(string testMethodName, object[] args)
+    public string CreateDisplayName(string testMethodName, object[] args)
     {
         string testCase = (string)args[0];
 

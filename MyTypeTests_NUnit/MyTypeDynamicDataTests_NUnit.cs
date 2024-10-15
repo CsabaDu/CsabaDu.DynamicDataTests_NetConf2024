@@ -1,7 +1,7 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit;
 
 [TestFixture]
-public sealed class MyTypeDynamicDataTests_NUnit : DynamicDataSources
+public sealed class MyTypeDynamicDataTests_NUnit : GeneralTestMembers
 {
     #region Dynamic data test members
 
@@ -23,7 +23,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : DynamicDataSources
     {
         foreach (object[] args in argsList)
         {
-            string displayName = CreateDisplayName(testMethodName, args);
+            string displayName = DataSources.CreateDisplayName(testMethodName, args);
             TestCaseData testCaseData = new(args[1..]);
 
             yield return testCaseData.SetName(displayName);

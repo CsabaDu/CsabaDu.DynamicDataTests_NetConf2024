@@ -1,7 +1,7 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
+public sealed class MyTypeDynamicDataTests_MSTest : GeneralTestMembers
 {
     #region Dynamic data test members
 
@@ -23,7 +23,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
         string testMethodName = testMethod.Name;
         string testCase = (string)argsArray[0];
 
-        return CreateDisplayName(testMethodName, argsArray);
+        return DataSources.CreateDisplayName(testMethodName, argsArray);
     }
     #endregion
 
