@@ -22,8 +22,8 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
                 string displayName = (string)args[0];
                 bool expected = (bool)args[1];
                 MyType other = (MyType)args[2];
-                TestCase_bool_MyType testData = new(displayName, expected, other);
 
+                TestCase_bool_MyType testData = new(displayName, expected, other);
                 yield return testData.ToArray();
             }
         }
@@ -35,8 +35,8 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
                 string displayName = (string)args[0];
                 bool expected = (bool)args[1];
                 object obj = args[2];
-                TestCase_bool_object testData = new(displayName, expected, obj); 
 
+                TestCase_bool_object testData = new(displayName, expected, obj); 
                 yield return testData.ToArray();
             }
         }

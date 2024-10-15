@@ -13,13 +13,13 @@ public sealed class MyTypeDynamicDataTests_NUnit : GeneralTestMembers
 
     private static readonly DynamicDataSources DataSources = new();
     private static IEnumerable<TestCaseData> EqualsMyTypeArgs
-        => GetTestCaseSource(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs());
+        => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs());
     private static IEnumerable<TestCaseData> EqualsObjectArgs
-        => GetTestCaseSource(nameof(NUnit_Equals_object_returns_expected), DataSources.GetEqualsObjectArgs());
+        => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.GetEqualsObjectArgs());
     private static IEnumerable<TestCaseData> GetHashCodeArgs
-        => GetTestCaseSource(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetGetHashCodeArgs());
+        => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetGetHashCodeArgs());
 
-    private static IEnumerable<TestCaseData> GetTestCaseSource(string testMethodName, IEnumerable<object[]> argsList)
+    private static IEnumerable<TestCaseData> GetTestData(string testMethodName, IEnumerable<object[]> argsList)
     {
         foreach (object[] args in argsList)
         {

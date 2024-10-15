@@ -90,9 +90,10 @@ public class DynamicDataSources : GeneralTestMembers
         _expected = false;
 
         TestCase_bool_MyType args = new(_testCase, _expected, _other);
-        object[] nullMyTypeArgsArray = args.ToObjectArray();
+        object[] nullMyTypeTestCase = args.ToObjectArray();
+        IEnumerable<object[]> getHashCodeArgs = GetGetHashCodeArgs();
 
-        return GetGetHashCodeArgs().Append(nullMyTypeArgsArray);
+        return getHashCodeArgs.Append(nullMyTypeTestCase);
     }
     #endregion
 }
