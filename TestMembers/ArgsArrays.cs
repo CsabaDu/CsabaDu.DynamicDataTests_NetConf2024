@@ -1,4 +1,4 @@
-﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers
+﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays
 {
     public abstract record TestCase_bool(string TestCase, bool Expected)
     {

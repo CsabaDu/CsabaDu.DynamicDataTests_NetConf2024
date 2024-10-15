@@ -3,7 +3,7 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
     public class MyTypeDynamicDataTests_xUnit : GeneralTestMembers
     {
         #region Dynamic data test members
-        
+
         public MyTypeDynamicDataTests_xUnit()
         {
             InitMyType();
@@ -36,7 +36,7 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
                 bool expected = (bool)args[1];
                 object obj = args[2];
 
-                TestCase_bool_object testData = new(displayName, expected, obj); 
+                TestCase_bool_object testData = new(displayName, expected, obj);
                 yield return testData.ToArray();
             }
         }
