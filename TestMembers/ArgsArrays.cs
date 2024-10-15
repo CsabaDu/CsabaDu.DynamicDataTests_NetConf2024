@@ -2,8 +2,8 @@
 {
     public abstract record TestCase_bool(string TestCase, bool Expected)
     {
-        public virtual object[] ToObjectArray() => [TestCase, Expected];
-        public virtual object[] ToArray() => [this];
+        public abstract object[] ToObjectArray();
+        public abstract object[] ToArray();
     }
 
     public record TestCase_bool_MyType(string TestCase, bool Expected, MyType Other) : TestCase_bool(TestCase, Expected)
