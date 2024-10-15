@@ -1,7 +1,7 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeDynamicDataTests_MSTest : TestRoot
+public sealed class MyTypeDynamicDataTests_MSTest : MyTypeTestsRoot
 {
     #region Dynamic data test members
 

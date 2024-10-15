@@ -1,6 +1,6 @@
-namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.GeneralTestMembers;
+namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers;
 
-public abstract class TestRoot
+public abstract class MyTypeTestsRoot
 {
     protected const string TestLabel = "TestLabel"; // UpperCase
     protected const string DifferentLabel = "testLabel"; // lowerCase
@@ -10,6 +10,7 @@ public abstract class TestRoot
     protected MyType _myType;
     protected int _quantity;
     protected string _label;
+
     protected object _obj;
     protected MyType _other;
     protected int _hashCode1;

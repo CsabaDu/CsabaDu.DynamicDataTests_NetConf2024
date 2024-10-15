@@ -1,7 +1,7 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
-public sealed class MyTypeSimpleTests : TestRoot
+public sealed class MyTypeSimpleTests : MyTypeTestsRoot
 {
     [TestInitialize]
     public void InitMyTypeTests()
