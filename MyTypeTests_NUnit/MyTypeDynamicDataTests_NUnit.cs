@@ -1,31 +1,37 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit;
 
-public class MyTypeDynamicDataTests_NUnit : DynamicDataSources
+[TestFixture]
+public sealed class MyTypeDynamicDataTests_NUnit : DynamicDataSources
 {
+    #region Dynamic data test members
+
     [SetUp]
-    public void Setup()
+    public void SetupMyTypeTests()
     {
         InitMyType();
     }
 
     private static readonly DynamicDataSources DataSources = new();
     private static IEnumerable<TestCaseData> EqualsMyTypeArgs
-        => GetTestCaseDataList(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs());
+        => GetTestCaseSource(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs());
     private static IEnumerable<TestCaseData> EqualsObjectArgs
-        => GetTestCaseDataList(nameof(NUnit_Equals_object_returns_expected), DataSources.GetEqualsObjectArgs());
+        => GetTestCaseSource(nameof(NUnit_Equals_object_returns_expected), DataSources.GetEqualsObjectArgs());
     private static IEnumerable<TestCaseData> GetHashCodeArgs
-        => GetTestCaseDataList(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetGetHashCodeArgs());
+        => GetTestCaseSource(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetGetHashCodeArgs());
 
-    private static IEnumerable<TestCaseData> GetTestCaseDataList(string testMethodName, IEnumerable<object[]> argsArraysList)
+    private static IEnumerable<TestCaseData> GetTestCaseSource(string testMethodName, IEnumerable<object[]> argsList)
     {
-        foreach (object[] argsArray in argsArraysList)
+        foreach (object[] args in argsList)
         {
-            string displayName = CreateDisplayName(testMethodName, argsArray);
-            TestCaseData testCaseData = new(argsArray[1..]);
+            string displayName = CreateDisplayName(testMethodName, args);
+            TestCaseData testCaseData = new(args[1..]);
 
             yield return testCaseData.SetName(displayName);
         }
     }
+    #endregion
+
+    #region Dynamic data test methods
 
     [Test, TestCaseSource(nameof(EqualsObjectArgs))]
     public void NUnit_Equals_object_returns_expected(bool expected, object obj)
@@ -61,4 +67,5 @@ public class MyTypeDynamicDataTests_NUnit : DynamicDataSources
         // Act
         Assert.That(actual, Is.EqualTo(expected));
     }
+    #endregion
 }

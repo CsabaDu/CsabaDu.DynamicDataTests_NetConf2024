@@ -2,14 +2,14 @@
 
 public class DynamicDataSources : GeneralTestMembers
 {
-    #region Dynamic data source members
+    #region Dynamic data sources members
 
     private string _testCase;
     private bool _expected;
 
-    public static string CreateDisplayName(string testMethodName, object[] argsArray)
+    public static string CreateDisplayName(string testMethodName, object[] args)
     {
-        string testCase = (string)argsArray[0];
+        string testCase = (string)args[0];
 
         return $"{testMethodName}: {testCase}";
     }
@@ -95,5 +95,4 @@ public class DynamicDataSources : GeneralTestMembers
         return GetGetHashCodeArgs().Append(nullMyTypeArgsArray);
     }
     #endregion
-
 }

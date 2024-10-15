@@ -3,13 +3,14 @@
 [TestClass]
 public sealed class MyTypeDynamicDataTests_MSTest : DynamicDataSources
 {
+    #region Dynamic data test members
+
     [TestInitialize]
     public void InitMyTypeTests()
     {
         InitMyType();
     }
 
-    #region Dynamic test members
     private static readonly DynamicDataSources DataSources = new();
     private const string DisplayName = nameof(GetDisplayName);
 
