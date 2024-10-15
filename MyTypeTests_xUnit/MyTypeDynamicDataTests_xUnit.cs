@@ -1,6 +1,6 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
 {
-    public class MyTypeDynamicDataTests_xUnit : GeneralTestMembers
+    public class MyTypeDynamicDataTests_xUnit : TestRoot
     {
         #region Dynamic data test members
 

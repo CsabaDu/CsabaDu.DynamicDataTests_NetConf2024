@@ -1,6 +1,6 @@
-namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers;
+namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.GeneralTestMembers;
 
-public abstract class GeneralTestMembers
+public abstract class TestRoot
 {
     protected const string TestLabel = "TestLabel"; // UpperCase
     protected const string DifferentLabel = "testLabel"; // lowerCase

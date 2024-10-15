@@ -1,7 +1,7 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit;
 
 [TestFixture]
-public sealed class MyTypeDynamicDataTests_NUnit : GeneralTestMembers
+public sealed class MyTypeDynamicDataTests_NUnit : TestRoot
 {
     #region Dynamic data test members
 

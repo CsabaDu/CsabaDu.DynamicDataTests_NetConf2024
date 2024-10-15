@@ -1,6 +1,6 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.DynamicDataSources;
 
-public class DynamicDataSources : GeneralTestMembers
+public class DynamicDataSources : TestRoot
 {
     #region Dynamic data sources members
 
