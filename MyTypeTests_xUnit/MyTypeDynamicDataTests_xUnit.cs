@@ -2,6 +2,8 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
 {
     public class MyTypeDynamicDataTests_xUnit : GeneralTestMembers
     {
+        #region Dynamic data test members
+        
         public MyTypeDynamicDataTests_xUnit()
         {
             InitMyType();
@@ -38,6 +40,9 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
                 yield return testData.ToArray();
             }
         }
+        #endregion
+
+        #region Dynamic data test methods
 
         [Theory]
         [MemberData(nameof(EqualsObjectArgs))]
@@ -77,4 +82,5 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
             Assert.Equal(testData.Expected, actual);
         }
     }
+    #endregion
 }
