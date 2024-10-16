@@ -11,9 +11,9 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
 
         private static readonly DynamicDataSources DataSources = new();
 
-        public static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(Framework.xUnit);
-        public static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(Framework.xUnit);
-        public static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(Framework.xUnit);
+        public static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(FrameworkCode.xUnit);
+        public static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(FrameworkCode.xUnit);
+        public static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(FrameworkCode.xUnit);
         #endregion
 
         #region Dynamic data test methods
