@@ -20,7 +20,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeTestsRoot
 
     public static string GetDisplayName(MethodInfo testMethod, object[] argsArray)
     {
-        return DataSources.CreateDisplayName(testMethod.Name, argsArray);
+        return DataSources.GetDisplayName(testMethod.Name, argsArray);
     }
     #endregion
 

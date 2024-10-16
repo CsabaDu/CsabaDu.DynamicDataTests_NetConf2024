@@ -7,7 +7,7 @@ public class DynamicDataSources : MyTypeTestsRoot
     private string _testCase;
     private bool _expected;
 
-    public string CreateDisplayName(string testMethodName, object[] args)
+    public string GetDisplayName(string testMethodName, object[] args)
     {
         string testCase = (string)args[0];
 
@@ -28,18 +28,17 @@ public class DynamicDataSources : MyTypeTestsRoot
         _obj = new();
         yield return argsToObjectArray();
 
+        _testCase = "Different MyType => false";
+        _quantity = DifferentQuantity;
+        _label = DifferentLabel;
+        _obj = GetMyType();
+        yield return argsToObjectArray();
+
         _testCase = "Same MyType => true";
         _quantity = TestQuantity;
         _label = TestLabel;
         _obj = GetMyType();
         _expected = true;
-        yield return argsToObjectArray();
-
-        _testCase = "Different MyType => false";
-        _quantity = DifferentQuantity;
-        _label = DifferentLabel;
-        _obj = GetMyType();
-        _expected = false;
         yield return argsToObjectArray();
 
         #region argsToObjectArray
