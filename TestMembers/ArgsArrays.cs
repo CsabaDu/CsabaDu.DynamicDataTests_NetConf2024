@@ -10,7 +10,6 @@
     public abstract record TestCase_bool(string TestCase, bool Expected)
     {
         public abstract object[] ToObjectArray(FrameworkCode frameworkCode);
-
         public override string ToString() => TestCase;
     }
 

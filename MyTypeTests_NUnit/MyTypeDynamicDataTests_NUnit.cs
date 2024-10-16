@@ -1,19 +1,18 @@
-using CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays;
-
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit;
 
 [TestFixture]
 public sealed class MyTypeDynamicDataTests_NUnit : MyTypeTestsRoot
 {
-    #region Dynamic data test members
-
     [SetUp]
     public void SetupMyTypeTests()
     {
         InitMyType();
     }
 
+    #region Dynamic data test members
+
     private static readonly DynamicDataSources DataSources = new();
+
     private static IEnumerable<TestCaseData> EqualsMyTypeArgs
         => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs(FrameworkCode.NUnit));
     private static IEnumerable<TestCaseData> EqualsObjectArgs
@@ -26,9 +25,9 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeTestsRoot
         foreach (object[] args in argsList)
         {
             string displayName = DataSources.CreateDisplayName(testMethodName, args);
-            TestCaseData testCaseData = new(args[1..]);
+            TestCaseData data = new(args[1..]);
 
-            yield return testCaseData.SetName(displayName);
+            yield return data.SetName(displayName);
         }
     }
     #endregion

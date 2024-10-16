@@ -1,13 +1,13 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
 {
-    public class MyTypeDynamicDataTests_xUnit : MyTypeTestsRoot
+    public sealed class MyTypeDynamicDataTests_xUnit : MyTypeTestsRoot
     {
-        #region Dynamic data test members
-
         public MyTypeDynamicDataTests_xUnit()
         {
             InitMyType();
         }
+
+        #region Dynamic data test members
 
         private static readonly DynamicDataSources DataSources = new();
 
