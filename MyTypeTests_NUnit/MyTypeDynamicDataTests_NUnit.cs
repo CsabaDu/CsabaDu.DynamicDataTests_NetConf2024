@@ -25,9 +25,9 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeTestsRoot
         foreach (object[] args in argsList)
         {
             string displayName = DataSources.CreateDisplayName(testMethodName, args);
-            TestCaseData data = new(args[1..]);
+            TestCaseData testData = new(args[1..]);
 
-            yield return data.SetName(displayName);
+            yield return testData.SetName(displayName);
         }
     }
     #endregion
