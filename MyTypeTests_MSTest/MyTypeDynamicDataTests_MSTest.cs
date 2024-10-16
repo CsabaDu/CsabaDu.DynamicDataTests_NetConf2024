@@ -20,10 +20,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeTestsRoot
 
     public static string GetDisplayName(MethodInfo testMethod, object[] argsArray)
     {
-        string testMethodName = testMethod.Name;
-        string testCase = (string)argsArray[0];
-
-        return DataSources.CreateDisplayName(testMethodName, argsArray);
+        return DataSources.CreateDisplayName(testMethod.Name, argsArray);
     }
     #endregion
 
