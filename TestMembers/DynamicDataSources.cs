@@ -17,7 +17,7 @@ public class DynamicDataSources : MyTypeTestsRoot
 
     #region Dynamic data sources
 
-    public IEnumerable<object[]> GetEqualsObjectArgs()
+    public IEnumerable<object[]> GetEqualsObjectArgs(Framework framework)
     {
         _testCase = "null => false";
         _obj = null;
@@ -43,16 +43,17 @@ public class DynamicDataSources : MyTypeTestsRoot
         yield return argsToObjectArray();
 
         #region argsToObjectArray
+
         object[] argsToObjectArray()
         {
             TestCase_bool_object args = new(_testCase, _expected, _obj);
 
-            return args.ToObjectArray();
+            return args.ToObjectArray(framework);
         }
         #endregion
     }
 
-    public IEnumerable<object[]> GetGetHashCodeArgs()
+    public IEnumerable<object[]> GetGetHashCodeArgs(Framework framework)
     {
         _testCase = "Different Quantity, same Label => false";
         _quantity = DifferentQuantity;
@@ -74,24 +75,25 @@ public class DynamicDataSources : MyTypeTestsRoot
         yield return argsToObjectArray();
 
         #region argsToObjectArray
+
         object[] argsToObjectArray()
         {
             TestCase_bool_MyType args = new(_testCase, _expected, _other);
 
-            return args.ToObjectArray();
+            return args.ToObjectArray(framework);
         }
         #endregion
     }
 
-    public IEnumerable<object[]> GetEqualsMyTypeArgs()
+    public IEnumerable<object[]> GetEqualsMyTypeArgs(Framework framework)
     {
         _testCase = "null => false";
         _other = null;
         _expected = false;
 
         TestCase_bool_MyType args = new(_testCase, _expected, _other);
-        object[] nullMyTypeTestCase = args.ToObjectArray();
-        IEnumerable<object[]> getHashCodeArgs = GetGetHashCodeArgs();
+        object[] nullMyTypeTestCase = args.ToObjectArray(framework);
+        IEnumerable<object[]> getHashCodeArgs = GetGetHashCodeArgs(framework);
 
         return getHashCodeArgs.Append(nullMyTypeTestCase);
     }

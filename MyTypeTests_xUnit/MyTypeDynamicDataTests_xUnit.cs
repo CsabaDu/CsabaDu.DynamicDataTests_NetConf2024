@@ -11,35 +11,9 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
 
         private static readonly DynamicDataSources DataSources = new();
 
-        public static IEnumerable<object[]> EqualsMyTypeArgs => GetTestData_bool_MyType(DataSources.GetEqualsMyTypeArgs());
-        public static IEnumerable<object[]> EqualsObjectArgs => GetTestData_bool_object(DataSources.GetEqualsObjectArgs());
-        public static IEnumerable<object[]> GetHashCodeArgs => GetTestData_bool_MyType(DataSources.GetGetHashCodeArgs());
-
-        public static IEnumerable<object[]> GetTestData_bool_MyType(IEnumerable<object[]> argsList)
-        {
-            foreach (object[] args in argsList)
-            {
-                string displayName = (string)args[0];
-                bool expected = (bool)args[1];
-                MyType other = (MyType)args[2];
-
-                TestCase_bool_MyType testData = new(displayName, expected, other);
-                yield return testData.ToArray();
-            }
-        }
-
-        public static IEnumerable<object[]> GetTestData_bool_object(IEnumerable<object[]> argsList)
-        {
-            foreach (object[] args in argsList)
-            {
-                string displayName = (string)args[0];
-                bool expected = (bool)args[1];
-                object obj = args[2];
-
-                TestCase_bool_object testData = new(displayName, expected, obj);
-                yield return testData.ToArray();
-            }
-        }
+        public static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(Framework.xUnit);
+        public static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(Framework.xUnit);
+        public static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(Framework.xUnit);
         #endregion
 
         #region Dynamic data test methods

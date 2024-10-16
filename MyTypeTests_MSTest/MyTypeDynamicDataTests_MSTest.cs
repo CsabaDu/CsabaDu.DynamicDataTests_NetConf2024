@@ -14,9 +14,9 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeTestsRoot
     private static readonly DynamicDataSources DataSources = new();
     private const string DisplayName = nameof(GetDisplayName);
 
-    private static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs();
-    private static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs();
-    private static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs();
+    private static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(Framework.MSTest);
+    private static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(Framework.MSTest);
+    private static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(Framework.MSTest);
 
     public static string GetDisplayName(MethodInfo testMethod, object[] argsArray)
     {
