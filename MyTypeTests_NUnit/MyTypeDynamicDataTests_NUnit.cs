@@ -6,7 +6,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeTestsRoot
     [SetUp]
     public void SetupMyTypeTests()
     {
-        InitMyType();
+        _myType = InitMyType();
     }
 
     #region Dynamic data test members

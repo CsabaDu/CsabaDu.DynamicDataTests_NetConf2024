@@ -6,7 +6,7 @@ public sealed class MyTypeStaticDataTests : MyTypeTestsRoot
     [TestInitialize]
     public void InitMyTypeTests()
     {
-        InitMyType();
+        _myType = InitMyType();
     }
 
     #region GetHashCode()

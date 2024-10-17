@@ -27,12 +27,12 @@ public abstract class MyTypeTestsRoot
 
     #region Test helper methods
 
-    protected void InitMyType()
+    protected MyType InitMyType()
     {
         _quantity = TestQuantity;
         _label = TestLabel;
 
-        _myType = GetMyType();
+        return GetMyType();
     }
 
     protected MyType GetMyType()

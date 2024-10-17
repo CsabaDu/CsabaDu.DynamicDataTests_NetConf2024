@@ -4,7 +4,7 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit
     {
         public MyTypeDynamicDataTests_xUnit()
         {
-            InitMyType();
+            _myType = InitMyType();
         }
 
         #region Dynamic data test members

@@ -6,7 +6,7 @@ public sealed class MyTypeSimpleTests : MyTypeTestsRoot
     [TestInitialize]
     public void InitMyTypeTests()
     {
-        InitMyType();
+        _myType = InitMyType();
     }
 
     #region Equals(object?)

@@ -19,9 +19,9 @@ public class DynamicDataSources : MyTypeTestsRoot
 
     public IEnumerable<object[]> GetEqualsObjectArgs(FrameworkCode frameworkCode)
     {
+        _expected = false;
         _testCase = "null => false";
         _obj = null;
-        _expected = false;
         yield return argsToObjectArray();
 
         _testCase = "object => false";
@@ -34,14 +34,10 @@ public class DynamicDataSources : MyTypeTestsRoot
         _obj = GetMyType();
         yield return argsToObjectArray();
 
-        _testCase = "Same MyType => true";
-        _quantity = TestQuantity;
-        _label = TestLabel;
-        _obj = GetMyType();
         _expected = true;
+        _testCase = "Same MyType => true";
+        _obj = InitMyType();
         yield return argsToObjectArray();
-
-        #region argsToObjectArray
 
         object[] argsToObjectArray()
         {
@@ -49,31 +45,26 @@ public class DynamicDataSources : MyTypeTestsRoot
 
             return args.ToObjectArray(frameworkCode);
         }
-        #endregion
     }
 
     public IEnumerable<object[]> GetGetHashCodeArgs(FrameworkCode frameworkCode)
     {
-        _testCase = "Different Quantity, same Label => false";
-        _quantity = DifferentQuantity;
-        _label = TestLabel;
-        _other = GetMyType();
-        _expected = false;
+        _expected = true;
+        _testCase = "Same Quantity, same Label => true";
+        _other = InitMyType();
         yield return argsToObjectArray();
 
-        _testCase = "Same Quantity, same Label => true";
-        _quantity = TestQuantity;
+        _expected = false;
+        _testCase = "Different Quantity, same Label => false";
+        _quantity = DifferentQuantity;
         _other = GetMyType();
-        _expected = true;
         yield return argsToObjectArray();
 
         _testCase = "Same Quantity, different Label => false";
+        _quantity = TestQuantity;
         _label = DifferentLabel;
         _other = GetMyType();
-        _expected = false;
         yield return argsToObjectArray();
-
-        #region argsToObjectArray
 
         object[] argsToObjectArray()
         {
@@ -81,14 +72,13 @@ public class DynamicDataSources : MyTypeTestsRoot
 
             return args.ToObjectArray(frameworkCode);
         }
-        #endregion
     }
 
     public IEnumerable<object[]> GetEqualsMyTypeArgs(FrameworkCode frameworkCode)
     {
+        _expected = false;
         _testCase = "null => false";
         _other = null;
-        _expected = false;
 
         TestCase_bool_MyType args = new(_testCase, _expected, _other);
         object[] nullMyTypeTestCase = args.ToObjectArray(frameworkCode);
