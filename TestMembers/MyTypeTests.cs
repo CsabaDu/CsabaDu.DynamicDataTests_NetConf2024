@@ -1,6 +1,6 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers;
 
-public abstract class MyTypeTestsRoot
+public abstract class MyTypeTests
 {
     #region Test params values
 
