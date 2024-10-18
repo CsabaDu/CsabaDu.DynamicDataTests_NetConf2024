@@ -9,9 +9,9 @@ public class DynamicDataSources : MyTypeTestsRoot
 
     public string GetDisplayName(string testMethodName, object[] args)
     {
-        string testCase = (string)args[0];
+        _testCase = (string)args[0];
 
-        return $"{testMethodName}: {testCase}";
+        return $"{testMethodName}: {_testCase}";
     }
     #endregion
 
