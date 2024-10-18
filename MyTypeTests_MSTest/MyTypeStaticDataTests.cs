@@ -77,10 +77,10 @@ public sealed class MyTypeStaticDataTests : MyTypeTestsRoot
 
     #region Equals(MyType?)
 
-    private static readonly MyType SameMyType = new(TestQuantity, TestLabel);
+    private static readonly MyType NullMyType = null;
     private static readonly MyType DifferentQuantityMyType = new(DifferentQuantity, TestLabel);
     private static readonly MyType DifferentLabelMyType = new(TestQuantity, DifferentLabel);
-    private static readonly MyType NullMyType = null;
+    private static readonly MyType SameMyType = new(TestQuantity, TestLabel);
 
     [TestMethod]
     [DataRow(false, nameof(NullMyType), DisplayName = "null => false")]
@@ -90,8 +90,9 @@ public sealed class MyTypeStaticDataTests : MyTypeTestsRoot
     public void Equals_MyType_returns_expected(bool expected, string otherName)
     {
         // Arrange
-        FieldInfo otherInfo = typeof(MyTypeStaticDataTests).GetField(otherName, BindingFlags.Static | BindingFlags.NonPublic);
-        _other = (MyType)otherInfo.GetValue(null);
+        Type testClassType = GetType();
+        FieldInfo paramInfo = testClassType.GetField(otherName, BindingFlags.Static | BindingFlags.NonPublic);
+        _other = (MyType)paramInfo.GetValue(null);
 
         // Act
         var actual = _myType.Equals(_other);
