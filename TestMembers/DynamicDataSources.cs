@@ -6,13 +6,6 @@ public class DynamicDataSources : MyTypeTestsRoot
 
     private string _testCase;
     private bool _expected;
-
-    public string GetDisplayName(string testMethodName, object[] args)
-    {
-        _testCase = (string)args[0];
-
-        return $"{testMethodName}: {_testCase}";
-    }
     #endregion
 
     #region Dynamic data sources

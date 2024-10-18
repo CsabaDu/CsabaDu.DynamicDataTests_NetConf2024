@@ -1,6 +1,6 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit;
 
-public sealed class MyTypeDynamicDataTests_xUnit : MyTypeTestsRoot
+public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
 {
     public MyTypeDynamicDataTests_xUnit()
     {
@@ -9,8 +9,6 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeTestsRoot
 
     #region Dynamic data test members
 
-    private static readonly DynamicDataSources DataSources = new();
-
     public static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(FrameworkCode.xUnit);
     public static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(FrameworkCode.xUnit);
     public static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(FrameworkCode.xUnit);
@@ -18,8 +16,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeTestsRoot
 
     #region Dynamic data test methods
 
-    [Theory]
-    [MemberData(nameof(EqualsObjectArgs))]
+    [Theory, MemberData(nameof(EqualsObjectArgs))]
     public void xUnit_Equals_arg_object_returns_expected(TestCase_bool_object testData)
     {
         // Arrange
@@ -30,8 +27,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeTestsRoot
         Assert.Equal(testData.Expected, actual);
     }
 
-    [Theory]
-    [MemberData(nameof(EqualsMyTypeArgs))]
+    [Theory, MemberData(nameof(EqualsMyTypeArgs))]
     public void xUnit_Equals_arg_MyType_returns_expected(TestCase_bool_MyType testData)
     {
         // Arrange
@@ -42,8 +38,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeTestsRoot
         Assert.Equal(testData.Expected, actual);
     }
 
-    [Theory]
-    [MemberData(nameof(GetHashCodeArgs))]
+    [Theory, MemberData(nameof(GetHashCodeArgs))]
     public void xUnit__GetHashCode_returns_expected(TestCase_bool_MyType testData)
     {
         // Arrange

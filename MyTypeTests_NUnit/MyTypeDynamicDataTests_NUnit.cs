@@ -1,7 +1,7 @@
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit;
 
 [TestFixture]
-public sealed class MyTypeDynamicDataTests_NUnit : MyTypeTestsRoot
+public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
 {
     [SetUp]
     public void SetupMyTypeTests()
@@ -10,8 +10,6 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeTestsRoot
     }
 
     #region Dynamic data test members
-
-    private static readonly DynamicDataSources DataSources = new();
 
     private static IEnumerable<TestCaseData> EqualsMyTypeArgs
         => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs(FrameworkCode.NUnit));
@@ -24,7 +22,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeTestsRoot
     {
         foreach (object[] args in argsList)
         {
-            string displayName = DataSources.GetDisplayName(testMethodName, args);
+            string displayName = CreateDisplayName(testMethodName, args);
             TestCaseData testData = new(args[1..]);
 
             yield return testData.SetName(displayName);
