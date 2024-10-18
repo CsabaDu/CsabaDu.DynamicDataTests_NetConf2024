@@ -56,8 +56,6 @@ public sealed class MyTypeSimpleTests : MyTypeTestsRoot
     public void Equals_object_sameMyType_returns_true()
     {
         // Arrange
-        _quantity = TestQuantity;
-        _label = TestLabel;
         _obj = GetMyType();
 
         // Act

@@ -32,8 +32,8 @@ public sealed class MyTypeStaticDataTests : MyTypeTestsRoot
     #region Equals(object?)
 
     [TestMethod]
-    [DataRow(false, TestQuantity, DifferentLabel, DisplayName = "Same MyType => true")]
-    [DataRow(false, DifferentQuantity, TestLabel, DisplayName = "Different MyType => false")]
+    [DataRow(true, TestQuantity, TestLabel, DisplayName = "Same MyType => true")]
+    [DataRow(false, DifferentQuantity, DifferentLabel, DisplayName = "Different MyType => false")]
 
     public void Equals_object_returns_expected(bool expected, int quantity, string label)
     {
