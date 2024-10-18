@@ -47,7 +47,6 @@ public sealed class MyTypeStaticDataTests : MyTypeTestsRoot
         Assert.AreEqual(expected, actual);
     }
 
-
     [TestMethod]
     public void Equals_object_arg_null_returns_false()
     {
