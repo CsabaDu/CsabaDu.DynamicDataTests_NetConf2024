@@ -50,5 +50,5 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
         // Assert
         Assert.Equal(testData.Expected, actual);
     }
+    #endregion
 }
-#endregion
