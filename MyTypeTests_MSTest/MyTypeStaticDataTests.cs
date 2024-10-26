@@ -12,10 +12,10 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     #region GetHashCode()
 
     [TestMethod]
-    [DataRow(true, TestQuantity, TestLabel, DisplayName = "Same Quantity, same Label => are equal")]
-    [DataRow(false, TestQuantity, DifferentLabel, DisplayName = "Same Quantity, different Label => are not equal")]
-    [DataRow(false, DifferentQuantity, TestLabel, DisplayName = "Different Quantity, same Label => are not equal")]
-    public void GetHashCode_returns_expected(bool expected, int quantity, string label)
+    [DataRow(TestQuantity, TestLabel, true,  DisplayName = "Same Quantity, same Label => are equal")]
+    [DataRow(TestQuantity, DifferentLabel, false, DisplayName = "Same Quantity, different Label => are not equal")]
+    [DataRow(DifferentQuantity, TestLabel, false, DisplayName = "Different Quantity, same Label => are not equal")]
+    public void GetHashCode_returns_expected(int quantity, string label, bool expected)
     {
         // Arrange
         _other = new(quantity, label);
@@ -32,13 +32,16 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     #region Equals(object?)
 
     [TestMethod]
-    [DataRow(true, TestQuantity, TestLabel, DisplayName = "Same MyType => true")]
-    [DataRow(false, DifferentQuantity, DifferentLabel, DisplayName = "Different MyType => false")]
-
-    public void Equals_object_returns_expected(bool expected, int quantity, string label)
+    [DataRow(new object[] { TestQuantity, TestLabel, true }, DisplayName = "Same MyType => true")]
+    [DataRow([DifferentQuantity, DifferentLabel, false], DisplayName = "Different MyType => false")]
+    public void Equals_object_returns_expected(object[] args)
     {
         // Arrange
-        _obj = new MyType(quantity, label);
+        _quantity = (int)args[0];
+        _label = (string)args[1];
+        _obj = GetMyType();
+
+        bool expected = (bool)args[^1];
 
         // Act
         var actual = _myType.Equals( _obj);
@@ -48,13 +51,13 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     }
 
     [TestMethod]
-    public void Equals_object_arg_null_returns_false()
+    [DataRow(null, DisplayName = "null => false")]
+    //[DataRow(new object(), DisplayName = "null => false")] // Fordítási hibát okozna
+    public void Equals_object_returns_false(object obj)
     {
         // Arrange
-        _obj = null;
-
         // Act
-        var actual = _myType.Equals(_obj);
+        var actual = _myType.Equals(obj);
 
         // Assert
         Assert.IsFalse(actual);
@@ -82,15 +85,15 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     private static readonly MyType SameMyType = new(TestQuantity, TestLabel);
 
     [TestMethod]
-    [DataRow(false, nameof(NullMyType), DisplayName = "null => false")]
-    [DataRow(false, nameof(DifferentQuantityMyType), DisplayName = "Different Quantity => false")]
-    [DataRow(false, nameof(DifferentLabelMyType), DisplayName = "Different Label => false")]
-    [DataRow(true, nameof(SameMyType), DisplayName = "Same MyType => true")]
-    public void Equals_MyType_returns_expected(bool expected, string otherName)
+    [DataRow(nameof(NullMyType), false, DisplayName = "null => false")]
+    [DataRow(nameof(DifferentQuantityMyType), false, DisplayName = "Different Quantity => false")]
+    [DataRow(nameof(DifferentLabelMyType), false, DisplayName = "Different Label => false")]
+    [DataRow(nameof(SameMyType), true, DisplayName = "Same MyType => true")]
+    public void Equals_MyType_returns_expected(string paramName, bool expected)
     {
         // Arrange
         Type testClassType = GetType();
-        FieldInfo paramInfo = testClassType.GetField(otherName, BindingFlags.Static | BindingFlags.NonPublic);
+        FieldInfo paramInfo = testClassType.GetField(paramName, BindingFlags.Static | BindingFlags.NonPublic);
         _other = (MyType)paramInfo.GetValue(null);
 
         // Act
