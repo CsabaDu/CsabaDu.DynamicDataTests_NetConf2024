@@ -32,8 +32,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
     [Test, TestCaseSource(nameof(EqualsObjectArgs))]
     public void NUnit_Equals_object_returns_expected(bool expected, object obj)
     {
-        // Arrange
-        // Act
+        // Arrange & Act
         var actual = _myType.Equals(obj);
 
         // Assert
@@ -43,8 +42,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
     [Test, TestCaseSource(nameof(EqualsMyTypeArgs))]
     public void NUnit_Equals_MyType_returns_expected(bool expected, MyType other)
     {
-        // Arrange
-        // Act
+        // Arrange & Act
         var actual = _myType.Equals(other);
 
         // Assert

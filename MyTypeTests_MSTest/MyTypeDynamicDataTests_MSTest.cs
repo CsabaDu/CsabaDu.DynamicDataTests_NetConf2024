@@ -23,8 +23,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     [TestMethod, DynamicData(nameof(EqualsObjectArgs), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
     public void MSTest_Equals_arg_object_returns_expected(string testCase, bool expected, object obj)
     {
-        // Arrange
-        // Act
+        // Arrange & Act
         var actual = _myType.Equals(obj);
 
         // Assert
@@ -34,8 +33,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     [TestMethod, DynamicData(nameof(EqualsMyTypeArgs), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
     public void MSTest_Equals_arg_MyType_returns_expected(string testCase, bool expected, MyType other)
     {
-        // Arrange
-        // Act
+        // Arrange & Act
         var actual = _myType.Equals(other);
 
         // Assert

@@ -52,8 +52,7 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     //[DataRow(new object(), DisplayName = "null => false")] // Fordítási hibát okozna
     public void Equals_object_returns_false(object obj)
     {
-        // Arrange
-        // Act
+        // Arrange & Act
         var actual = _myType.Equals(obj);
 
         // Assert

@@ -16,8 +16,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
     [Theory, MemberData(nameof(EqualsObjectArgs))]
     public void xUnit_Equals_arg_object_returns_expected(TestCase_bool_object testData)
     {
-        // Arrange
-        // Act
+        // Arrange & Act
         var actual = _myType.Equals(testData.Obj);
 
         // Assert
@@ -27,8 +26,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
     [Theory, MemberData(nameof(EqualsMyTypeArgs))]
     public void xUnit_Equals_arg_MyType_returns_expected(TestCase_bool_MyType testData)
     {
-        // Arrange
-        // Act
+        // Arrange & Act
         var actual = _myType.Equals(testData.Other);
 
         // Assert
