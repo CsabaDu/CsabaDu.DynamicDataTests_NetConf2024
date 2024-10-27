@@ -6,6 +6,12 @@ public class DynamicDataSources : MyTypeTests
 
     private string _testCase;
     private bool _expected;
+
+    private string CreateTestCase(string paramsDescription)
+    {
+        string expectedValue = _expected.ToString();
+        return $"{paramsDescription} => {expectedValue}";
+    }
     #endregion
 
     #region Dynamic data sources
@@ -13,20 +19,20 @@ public class DynamicDataSources : MyTypeTests
     public IEnumerable<object[]> GetEqualsObjectArgs(FrameworkCode frameworkCode)
     {
         _expected = true;
-        _testCase = "Same MyType => true";
+        _testCase = CreateTestCase("Same MyType");
         _obj = InitMyTypeElements();
         yield return argsToObjectArray();
 
         _expected = false;
-        _testCase = "null => false";
+        _testCase = CreateTestCase("null");
         _obj = null;
         yield return argsToObjectArray();
 
-        _testCase = "object => false";
+        _testCase = CreateTestCase("object");
         _obj = new();
         yield return argsToObjectArray();
 
-        _testCase = "Different MyType => false";
+        _testCase = CreateTestCase("Different MyType");
         _quantity = DifferentQuantity;
         _label = DifferentLabel;
         _obj = GetMyType();
@@ -42,17 +48,17 @@ public class DynamicDataSources : MyTypeTests
     public IEnumerable<object[]> GetGetHashCodeArgs(FrameworkCode frameworkCode)
     {
         _expected = true;
-        _testCase = "Same Quantity, same Label => true";
+        _testCase = CreateTestCase("Same Quantity, same Label");
         _other = InitMyTypeElements();
         yield return argsToObjectArray();
 
         _expected = false;
-        _testCase = "Different Quantity, same Label => false";
+        _testCase = CreateTestCase("Different Quantity, same Label");
         _quantity = DifferentQuantity;
         _other = GetMyType();
         yield return argsToObjectArray();
 
-        _testCase = "Same Quantity, different Label => false";
+        _testCase = CreateTestCase("Same Quantity, different Label");
         _quantity = TestQuantity;
         _label = DifferentLabel;
         _other = GetMyType();
@@ -68,7 +74,7 @@ public class DynamicDataSources : MyTypeTests
     public IEnumerable<object[]> GetEqualsMyTypeArgs(FrameworkCode frameworkCode)
     {
         _expected = false;
-        _testCase = "null => false";
+        _testCase = CreateTestCase("null");
         _other = null;
 
         TestCase_bool_MyType args = new(_testCase, _expected, _other);
