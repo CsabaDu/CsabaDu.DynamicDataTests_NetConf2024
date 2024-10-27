@@ -6,60 +6,47 @@ public sealed class MyTypeSimpleTests : MyTypeTests
     [TestInitialize]
     public void InitMyTypeTests() => _myType = InitMyTypeElements();
 
-    #region Equals(object?)
+    #region GetHashCode()
 
     [TestMethod]
-    public void Equals_object_null_returns_false()
-    {
-        // Arrange
-        _obj = null;
-
-        // Act
-        var actual = _myType.Equals(_obj);
-
-        // Assert
-        Assert.IsFalse(actual);
-    }
-
-    [TestMethod]
-    public void Equals_object_object_returns_false()
-    {
-        // Arrange
-        _obj = new();
-
-        // Act
-        var actual = _myType.Equals(_obj);
-
-        // Assert
-        Assert.IsFalse(actual);
-    }
-
-    [TestMethod]
-    public void Equals_object_differentMyType_returns_false()
+    public void GetHashCode_differentQuantity_AreNotEqual()
     {
         // Arrange
         _quantity = DifferentQuantity;
-        _label = DifferentLabel;
-        _obj = GetMyType();
+        _other = GetMyType();
 
         // Act
-        var actual = _myType.Equals(_obj);
+        InitHashCodes(_other);
 
         // Assert
-        Assert.IsFalse(actual);
+        Assert.AreNotEqual(_hashCode1, _hashCode2);
     }
 
     [TestMethod]
-    public void Equals_object_sameMyType_returns_true()
+    public void GetHashCode_differentLabel_AreNotEqual()
     {
         // Arrange
-        _obj = GetMyType();
+        _label = DifferentLabel;
+        _other = GetMyType();
 
         // Act
-        var actual = _myType.Equals(_obj);
+        InitHashCodes(_other);
 
         // Assert
-        Assert.IsTrue(actual);
+        Assert.AreNotEqual(_hashCode1, _hashCode2);
+    }
+
+    [TestMethod]
+    public void GetHashCode_sameProperties_AreEqual()
+    {
+        // Arrange
+        _other = GetMyType();
+
+        // Act
+        InitHashCodes(_other);
+
+        // Assert
+        Assert.AreEqual(_hashCode1, _hashCode2);
     }
     #endregion
 
@@ -120,47 +107,60 @@ public sealed class MyTypeSimpleTests : MyTypeTests
     }
     #endregion
 
-    #region GetHashCode()
+    #region Equals(object?)
 
     [TestMethod]
-    public void GetHashCode_differentQuantity_AreNotEqual()
+    public void Equals_object_null_returns_false()
+    {
+        // Arrange
+        _obj = null;
+
+        // Act
+        var actual = _myType.Equals(_obj);
+
+        // Assert
+        Assert.IsFalse(actual);
+    }
+
+    [TestMethod]
+    public void Equals_object_object_returns_false()
+    {
+        // Arrange
+        _obj = new();
+
+        // Act
+        var actual = _myType.Equals(_obj);
+
+        // Assert
+        Assert.IsFalse(actual);
+    }
+
+    [TestMethod]
+    public void Equals_object_differentMyType_returns_false()
     {
         // Arrange
         _quantity = DifferentQuantity;
-        _other = GetMyType();
-
-        // Act
-        InitHashCodes(_other);
-
-        // Assert
-        Assert.AreNotEqual(_hashCode1, _hashCode2);
-    }
-
-    [TestMethod]
-    public void GetHashCode_differentLabel_AreNotEqual()
-    {
-        // Arrange
         _label = DifferentLabel;
-        _other = GetMyType();
+        _obj = GetMyType();
 
         // Act
-        InitHashCodes(_other);
+        var actual = _myType.Equals(_obj);
 
         // Assert
-        Assert.AreNotEqual(_hashCode1, _hashCode2);
+        Assert.IsFalse(actual);
     }
 
     [TestMethod]
-    public void GetHashCode_sameProperties_AreEqual()
+    public void Equals_object_sameMyType_returns_true()
     {
         // Arrange
-        _other = GetMyType();
+        _obj = GetMyType();
 
         // Act
-        InitHashCodes(_other);
+        var actual = _myType.Equals(_obj);
 
         // Assert
-        Assert.AreEqual(_hashCode1, _hashCode2);
+        Assert.IsTrue(actual);
     }
     #endregion
 }

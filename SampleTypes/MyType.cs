@@ -18,8 +18,5 @@ public sealed class MyType(int quantity, string label) : IEquatable<MyType>
             && Equals(other);
     }
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Quantity, Label);
-    }
+    public override int GetHashCode() => HashCode.Combine(Quantity, Label);
 }

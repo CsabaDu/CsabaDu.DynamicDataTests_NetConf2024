@@ -48,12 +48,15 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     }
 
     [TestMethod]
-    [DataRow(null, DisplayName = "null => false")]
-    //[DataRow(new object(), DisplayName = "object => false")] // Fordítási hibát okozna
-    public void Equals_object_returns_false(object obj)
+    [DataRow([null], DisplayName = "null => false")]
+    //[DataRow([new object()], DisplayName = "object => false")] // Fordítási hibát okozna
+    public void Equals_object_returns_false(object[] args)
     {
-        // Arrange & Act
-        var actual = _myType.Equals(obj);
+        // Arrange
+        _obj = args[0];
+
+        // Act
+        var actual = _myType.Equals(_obj);
 
         // Assert
         Assert.IsFalse(actual);
