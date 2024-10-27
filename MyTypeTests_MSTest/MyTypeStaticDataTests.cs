@@ -49,7 +49,7 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
 
     [TestMethod]
     [DataRow(null, DisplayName = "null => false")]
-    //[DataRow(new object(), DisplayName = "null => false")] // Fordítási hibát okozna
+    //[DataRow(new object(), DisplayName = "object => false")] // Fordítási hibát okozna
     public void Equals_object_returns_false(object obj)
     {
         // Arrange & Act
