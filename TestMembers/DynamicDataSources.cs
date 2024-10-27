@@ -81,10 +81,10 @@ public class DynamicDataSources : MyTypeTests
         _testCase = CreateTestCase("null");
         _other = null;
 
-        object[] nullMyTypeTestCase = ArgsToObjectArray_MyType(frameworkCode);
+        object[] nullOtherTestCase = ArgsToObjectArray_MyType(frameworkCode);
         IEnumerable<object[]> getHashCodeArgs = GetGetHashCodeArgs(frameworkCode);
 
-        return getHashCodeArgs.Append(nullMyTypeTestCase);
+        return getHashCodeArgs.Append(nullOtherTestCase);
     }
     #endregion
 }
