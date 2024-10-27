@@ -1,11 +1,6 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays
 {
-    public enum FrameworkCode
-    {
-        MSTest,
-        NUnit,
-        xUnit,
-    }
+    public enum FrameworkCode { MSTest, NUnit, xUnit, }
 
     public abstract record TestCase_bool(string TestCase, bool Expected)
     {
@@ -18,8 +13,7 @@
     {
         public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
         {
-            FrameworkCode.MSTest or
-            FrameworkCode.NUnit => [TestCase, Expected, Other],
+            FrameworkCode.MSTest or FrameworkCode.NUnit => [TestCase, Expected, Other],
             FrameworkCode.xUnit => [this],
             _ => null,
         };
@@ -31,8 +25,7 @@
     {
         public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
         {
-            FrameworkCode.MSTest or
-            FrameworkCode.NUnit => [TestCase, Expected, Obj],
+            FrameworkCode.MSTest or FrameworkCode.NUnit => [TestCase, Expected, Obj],
             FrameworkCode.xUnit => [this],
             _ => null,
         };
