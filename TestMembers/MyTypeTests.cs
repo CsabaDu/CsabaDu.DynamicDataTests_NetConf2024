@@ -27,17 +27,14 @@ public abstract class MyTypeTests
 
     #region Test helper methods
 
-    protected MyType InitMyType()
+    protected MyType GetMyType() => new(_quantity, _label);
+
+    protected MyType InitMyTypeElements()
     {
         _quantity = TestQuantity;
         _label = TestLabel;
 
         return GetMyType();
-    }
-
-    protected MyType GetMyType()
-    {
-        return new(_quantity, _label);
     }
 
     protected void InitHashCodes(MyType other)

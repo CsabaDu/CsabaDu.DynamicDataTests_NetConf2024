@@ -4,10 +4,7 @@
 public sealed class MyTypeStaticDataTests : MyTypeTests
 {
     [TestInitialize]
-    public void InitMyTypeTests()
-    {
-        _myType = InitMyType();
-    }
+    public void InitMyTypeTests() => _myType = InitMyTypeElements();
 
     #region GetHashCode()
 

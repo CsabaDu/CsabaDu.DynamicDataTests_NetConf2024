@@ -4,10 +4,7 @@
 public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
 {
     [TestInitialize]
-    public void InitMyTypeTests()
-    {
-        _myType = InitMyType();
-    }
+    public void InitMyTypeTests() => _myType = InitMyTypeElements();
 
     #region Dynamic data test members
 
@@ -18,9 +15,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     private const string DisplayName = nameof(GetDisplayName);
 
     public static string GetDisplayName(MethodInfo testMethod, object[] argsArray)
-    {
-        return CreateDisplayName(testMethod.Name, argsArray);
-    }
+    => CreateDisplayName(testMethod.Name, argsArray);
     #endregion
 
     #region Dynamic data test methods

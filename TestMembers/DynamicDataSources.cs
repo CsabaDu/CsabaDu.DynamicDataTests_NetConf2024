@@ -12,6 +12,11 @@ public class DynamicDataSources : MyTypeTests
 
     public IEnumerable<object[]> GetEqualsObjectArgs(FrameworkCode frameworkCode)
     {
+        _expected = true;
+        _testCase = "Same MyType => true";
+        _obj = InitMyTypeElements();
+        yield return argsToObjectArray();
+
         _expected = false;
         _testCase = "null => false";
         _obj = null;
@@ -27,15 +32,9 @@ public class DynamicDataSources : MyTypeTests
         _obj = GetMyType();
         yield return argsToObjectArray();
 
-        _expected = true;
-        _testCase = "Same MyType => true";
-        _obj = InitMyType();
-        yield return argsToObjectArray();
-
         object[] argsToObjectArray()
         {
             TestCase_bool_object args = new(_testCase, _expected, _obj);
-
             return args.ToObjectArray(frameworkCode);
         }
     }
@@ -44,7 +43,7 @@ public class DynamicDataSources : MyTypeTests
     {
         _expected = true;
         _testCase = "Same Quantity, same Label => true";
-        _other = InitMyType();
+        _other = InitMyTypeElements();
         yield return argsToObjectArray();
 
         _expected = false;
@@ -62,7 +61,6 @@ public class DynamicDataSources : MyTypeTests
         object[] argsToObjectArray()
         {
             TestCase_bool_MyType args = new(_testCase, _expected, _other);
-
             return args.ToObjectArray(frameworkCode);
         }
     }
