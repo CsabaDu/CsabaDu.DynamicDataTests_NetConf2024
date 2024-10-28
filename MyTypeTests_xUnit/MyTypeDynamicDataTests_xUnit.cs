@@ -34,7 +34,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
     }
 
     [Theory, MemberData(nameof(GetHashCodeArgs))]
-    public void xUnit__GetHashCode_returns_expected(TestCase_bool_MyType testData)
+    public void xUnit_GetHashCode_returns_expected(TestCase_bool_MyType testData)
     {
         // Arrange
         InitHashCodes(testData.Other);

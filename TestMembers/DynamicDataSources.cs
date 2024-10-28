@@ -9,8 +9,8 @@ public class DynamicDataSources : MyTypeTests
 
     private string CreateTestCase(string paramsDescription)
     {
-        string expectedValue = _expected.ToString();
-        return $"{paramsDescription} => {expectedValue}";
+        string expectedToString = _expected.ToString();
+        return $"{paramsDescription} => {expectedToString}";
     }
 
     private object[] ArgsToObjectArray_object(FrameworkCode frameworkCode)
@@ -81,10 +81,10 @@ public class DynamicDataSources : MyTypeTests
         _testCase = CreateTestCase("null");
         _other = null;
 
-        object[] nullOtherTestCase = ArgsToObjectArray_MyType(frameworkCode);
+        object[] nullMyTypeTestCase = ArgsToObjectArray_MyType(frameworkCode);
         IEnumerable<object[]> getHashCodeArgs = GetGetHashCodeArgs(frameworkCode);
 
-        return getHashCodeArgs.Append(nullOtherTestCase);
+        return getHashCodeArgs.Append(nullMyTypeTestCase);
     }
     #endregion
 }

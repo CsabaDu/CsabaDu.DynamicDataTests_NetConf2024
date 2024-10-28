@@ -1,6 +1,11 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays
 {
-    public enum FrameworkCode { MSTest, NUnit, xUnit, }
+    public enum FrameworkCode
+    {
+        MSTest,
+        NUnit,
+        xUnit,
+    }
 
     public abstract record TestCase_bool(string TestCase, bool Expected)
     {
