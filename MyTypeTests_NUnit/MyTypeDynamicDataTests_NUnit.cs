@@ -1,19 +1,24 @@
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+
 namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit;
 
 [TestFixture]
 public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
 {
+    [OneTimeSetUp]
+    public void SetupMyTypeTestsClass() => Framework = FrameworkCode.NUnit;
+
     [SetUp]
     public void SetupMyTypeTests() => _myType = InitMyTypeElements();
 
     #region Dynamic data test members
 
     private static IEnumerable<TestCaseData> EqualsMyTypeArgs
-    => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs(FrameworkCode.NUnit));
+    => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs(Framework));
     private static IEnumerable<TestCaseData> EqualsObjectArgs
-    => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.GetEqualsObjectArgs(FrameworkCode.NUnit));
+    => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.GetEqualsObjectArgs(Framework));
     private static IEnumerable<TestCaseData> GetHashCodeArgs
-    => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetGetHashCodeArgs(FrameworkCode.NUnit));
+    => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetGetHashCodeArgs(Framework));
 
     private static IEnumerable<TestCaseData> GetTestData(string testMethodName, IEnumerable<object[]> argsList)
     {

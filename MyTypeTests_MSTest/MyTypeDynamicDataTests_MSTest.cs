@@ -1,16 +1,20 @@
-﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
+﻿using CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays;
+
+namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
 public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
 {
+    [ClassInitialize]
+    public void InitMyTypeTestsClass() => Framework = FrameworkCode.MSTest;
+
     [TestInitialize]
     public void InitMyTypeTests() => _myType = InitMyTypeElements();
 
     #region Dynamic data test members
-
-    private static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(FrameworkCode.MSTest);
-    private static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(FrameworkCode.MSTest);
-    private static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(FrameworkCode.MSTest);
+    private static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(Framework);
+    private static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(Framework);
+    private static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(Framework);
 
     private const string DisplayName = nameof(GetDisplayName);
 

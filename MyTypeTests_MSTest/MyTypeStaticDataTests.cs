@@ -49,7 +49,7 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
 
     [TestMethod]
     [DataRow(null, DisplayName = "null => false")]
-    public void Equals_object_returns_false(object obj)
+    public void Equals_object_arg_null_returns_false(object obj)
     {
         // Arrange & Act
         var actual = _myType.Equals(obj);
