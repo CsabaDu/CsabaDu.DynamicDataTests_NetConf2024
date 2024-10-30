@@ -3,6 +3,7 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit;
 public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
 {
     static MyTypeDynamicDataTests_xUnit() => Framework = FrameworkCode.xUnit;
+
     public MyTypeDynamicDataTests_xUnit() => _myType = InitMyTypeElements();
 
     #region Dynamic data test members

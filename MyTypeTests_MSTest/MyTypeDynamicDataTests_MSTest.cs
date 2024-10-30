@@ -1,12 +1,10 @@
-﻿using CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays;
-
-namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
+﻿namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 
 [TestClass]
 public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
 {
     [ClassInitialize]
-    public void InitMyTypeTestsClass() => Framework = FrameworkCode.MSTest;
+    public static void InitMyTypeTestsClass(TestContext context) => Framework = FrameworkCode.MSTest;
 
     [TestInitialize]
     public void InitMyTypeTests() => _myType = InitMyTypeElements();
