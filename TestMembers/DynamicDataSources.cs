@@ -15,13 +15,13 @@ public class DynamicDataSources : MyTypeTests
 
     private object[] ArgsToObjectArray_object(FrameworkCode frameworkCode)
     {
-        TestCase_bool_object args = new(_testCase, _expected, _obj);
+        TestData_object args = new(_testCase, _expected, _obj);
         return args.ToObjectArray(frameworkCode);
     }
 
     private object[] ArgsToObjectArray_MyType(FrameworkCode frameworkCode)
     {
-        TestCase_bool_MyType args = new(_testCase, _expected, _other);
+        TestData_MyType args = new(_testCase, _expected, _other);
         return args.ToObjectArray(frameworkCode);
     }
     #endregion

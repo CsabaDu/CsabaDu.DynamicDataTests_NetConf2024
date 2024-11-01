@@ -7,14 +7,14 @@
         xUnit,
     }
 
-    public abstract record TestCase_bool(string TestCase, bool Expected)
+    public abstract record TestData(string TestCase, bool Expected)
     {
         public abstract object[] ToObjectArray(FrameworkCode frameworkCode);
 
         public override string ToString() => TestCase;
     }
 
-    public record TestCase_bool_MyType(string TestCase, bool Expected, MyType Other) : TestCase_bool(TestCase, Expected)
+    public record TestData_MyType(string TestCase, bool Expected, MyType Other) : TestData(TestCase, Expected)
     {
         public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
         {
@@ -26,7 +26,7 @@
         public override string ToString() => base.ToString();
     }
 
-    public record TestCase_bool_object(string TestCase, bool Expected, object Obj) : TestCase_bool(TestCase, Expected)
+    public record TestData_object(string TestCase, bool Expected, object Obj) : TestData(TestCase, Expected)
     {
         public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
         {
