@@ -14,23 +14,23 @@
         public override sealed string ToString() => TestCase;
     }
 
-    public record TestData_MyType(string TestCase, bool Expected, MyType Other) : TestData(TestCase, Expected)
-    {
-        public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
-        {
-            FrameworkCode.MSTest or
-            FrameworkCode.NUnit => [TestCase, Expected, Other],
-            FrameworkCode.xUnit => [this],
-            _ => null,
-        };
-    }
-
     public record TestData_object(string TestCase, bool Expected, object Obj) : TestData(TestCase, Expected)
     {
         public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
         {
             FrameworkCode.MSTest or
             FrameworkCode.NUnit => [TestCase, Expected, Obj],
+            FrameworkCode.xUnit => [this],
+            _ => null,
+        };
+    }
+
+    public record TestData_MyType(string TestCase, bool Expected, MyType Other) : TestData(TestCase, Expected)
+    {
+        public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
+        {
+            FrameworkCode.MSTest or
+            FrameworkCode.NUnit => [TestCase, Expected, Other],
             FrameworkCode.xUnit => [this],
             _ => null,
         };
