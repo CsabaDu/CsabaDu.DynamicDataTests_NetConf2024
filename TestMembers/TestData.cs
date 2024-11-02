@@ -18,7 +18,8 @@
     {
         public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
         {
-            FrameworkCode.MSTest or FrameworkCode.NUnit => [TestCase, Expected, Other],
+            FrameworkCode.MSTest or
+            FrameworkCode.NUnit => [TestCase, Expected, Other],
             FrameworkCode.xUnit => [this],
             _ => null,
         };
@@ -28,7 +29,8 @@
     {
         public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
         {
-            FrameworkCode.MSTest or FrameworkCode.NUnit => [TestCase, Expected, Obj],
+            FrameworkCode.MSTest or
+            FrameworkCode.NUnit => [TestCase, Expected, Obj],
             FrameworkCode.xUnit => [this],
             _ => null,
         };
