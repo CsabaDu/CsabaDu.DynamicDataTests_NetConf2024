@@ -11,7 +11,7 @@
     {
         public abstract object[] ToObjectArray(FrameworkCode frameworkCode);
 
-        public override string ToString() => TestCase;
+        public override sealed string ToString() => TestCase;
     }
 
     public record TestData_MyType(string TestCase, bool Expected, MyType Other) : TestData(TestCase, Expected)
@@ -22,8 +22,6 @@
             FrameworkCode.xUnit => [this],
             _ => null,
         };
-
-        public override string ToString() => base.ToString();
     }
 
     public record TestData_object(string TestCase, bool Expected, object Obj) : TestData(TestCase, Expected)
@@ -34,7 +32,5 @@
             FrameworkCode.xUnit => [this],
             _ => null,
         };
-
-        public override string ToString() => base.ToString();
     }
 }
