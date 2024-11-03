@@ -33,7 +33,6 @@ public abstract class MyTypeTests
     {
         _quantity = TestQuantity;
         _label = TestLabel;
-
         return GetMyType();
     }
 

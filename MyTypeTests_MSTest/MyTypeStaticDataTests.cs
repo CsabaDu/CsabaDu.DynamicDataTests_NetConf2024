@@ -89,8 +89,8 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     public void Equals_MyType_returns_expected(string paramName, bool expected)
     {
         // Arrange
-        Type testClassType = GetType();
-        FieldInfo paramInfo = testClassType.GetField(paramName, BindingFlags.Static | BindingFlags.NonPublic);
+        Type thisType = GetType();
+        FieldInfo paramInfo = thisType.GetField(paramName, BindingFlags.Static | BindingFlags.NonPublic);
         _other = (MyType)paramInfo.GetValue(null);
 
         // Act

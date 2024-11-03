@@ -24,7 +24,6 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
         {
             string displayName = CreateDisplayName(testMethodName, args);
             TestCaseData testData = new(args[1..]);
-
             yield return testData.SetName(displayName);
         }
     }

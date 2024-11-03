@@ -8,7 +8,6 @@ public abstract class MyTypeDynamicDataTests : MyTypeTests
     protected static string CreateDisplayName(string testMethodName, object[] args)
     {
         string testCase = (string)args[0];
-
         return $"{testMethodName}: {testCase}";
     }
 }
