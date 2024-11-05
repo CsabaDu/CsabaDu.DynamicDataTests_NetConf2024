@@ -31,7 +31,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
 
     #region Dynamic data test methods
 
-    [Test, TestCaseSource(nameof(EqualsObjectArgs))]
+    [TestCaseSource(nameof(EqualsObjectArgs))]
     public void NUnit_Equals_object_returns_expected(bool expected, object obj)
     {
         // Arrange & Act
@@ -41,7 +41,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
-    [Test, TestCaseSource(nameof(EqualsMyTypeArgs))]
+    [TestCaseSource(nameof(EqualsMyTypeArgs))]
     public void NUnit_Equals_MyType_returns_expected(bool expected, MyType other)
     {
         // Arrange & Act
@@ -51,7 +51,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
-    [Test, TestCaseSource(nameof(GetHashCodeArgs))]
+    [TestCaseSource(nameof(GetHashCodeArgs))]
     public void NUnit_GetHashCode_returns_expected(bool expected, MyType other)
     {
         // Arrange
