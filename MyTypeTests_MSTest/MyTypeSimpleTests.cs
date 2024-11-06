@@ -4,7 +4,7 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_MSTest;
 public sealed class MyTypeSimpleTests : MyTypeTests
 {
     [TestInitialize]
-    public void InitMyTypeTests() => _myType = InitMyTypeElements();
+    public void InitMyTypeTests() => InitMyTypeElements();
 
     #region GetHashCode()
 

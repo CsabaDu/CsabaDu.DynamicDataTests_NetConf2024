@@ -6,9 +6,6 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
     [OneTimeSetUp]
     public void SetupMyTypeTestsClass() => Framework = FrameworkCode.NUnit;
 
-    [SetUp]
-    public void SetupMyTypeTests() => _myType = InitMyTypeElements();
-
     #region Dynamic data test members
 
     private static IEnumerable<TestCaseData> EqualsMyTypeArgs

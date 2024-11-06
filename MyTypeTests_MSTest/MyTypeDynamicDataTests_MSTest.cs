@@ -6,9 +6,6 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     [ClassInitialize]
     public static void InitMyTypeTestsClass(TestContext context) => Framework = FrameworkCode.MSTest;
 
-    [TestInitialize]
-    public void InitMyTypeTests() => _myType = InitMyTypeElements();
-
     #region Dynamic data test members
     private static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(Framework);
     private static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(Framework);

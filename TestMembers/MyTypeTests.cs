@@ -12,7 +12,8 @@ public abstract class MyTypeTests
 
     #region SUT fields
 
-    protected MyType _myType;
+    protected readonly MyType _myType = new(TestQuantity, TestLabel);
+
     protected int _quantity;
     protected string _label;
     #endregion
@@ -29,11 +30,10 @@ public abstract class MyTypeTests
 
     protected MyType GetMyType() => new(_quantity, _label);
 
-    protected MyType InitMyTypeElements()
+    protected void InitMyTypeElements()
     {
         _quantity = TestQuantity;
         _label = TestLabel;
-        return GetMyType();
     }
 
     protected void InitHashCodes(MyType other)

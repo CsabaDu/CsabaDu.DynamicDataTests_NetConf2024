@@ -30,9 +30,11 @@ public class DynamicDataSources : MyTypeTests
 
     public IEnumerable<object[]> GetEqualsObjectArgs(FrameworkCode frameworkCode)
     {
+        InitMyTypeElements();
+
         _expected = true;
         _testCase = CreateTestCase("Same MyType");
-        _obj = InitMyTypeElements();
+        _obj = GetMyType();
         yield return argsToObjectArray();
 
         _expected = false;
@@ -55,9 +57,11 @@ public class DynamicDataSources : MyTypeTests
 
     public IEnumerable<object[]> GetGetHashCodeArgs(FrameworkCode frameworkCode)
     {
+        InitMyTypeElements();
+
         _expected = true;
         _testCase = CreateTestCase("Same Quantity, same Label");
-        _other = InitMyTypeElements();
+        _other = GetMyType();
         yield return argsToObjectArray();
 
         _expected = false;
