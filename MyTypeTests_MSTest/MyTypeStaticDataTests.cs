@@ -86,11 +86,11 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
     [DataRow(nameof(DifferentQuantityMyType), false, DisplayName = "Different Quantity => false")]
     [DataRow(nameof(DifferentLabelMyType), false, DisplayName = "Different Label => false")]
     [DataRow(nameof(SameMyType), true, DisplayName = "Same MyType => true")]
-    public void Equals_MyType_returns_expected(string paramName, bool expected)
+    public void Equals_MyType_returns_expected(string fieldName, bool expected)
     {
         // Arrange
         Type thisType = GetType();
-        FieldInfo paramInfo = thisType.GetField(paramName, BindingFlags.Static | BindingFlags.NonPublic);
+        FieldInfo paramInfo = thisType.GetField(fieldName, BindingFlags.Static | BindingFlags.NonPublic);
         _other = (MyType)paramInfo.GetValue(null);
 
         // Act
