@@ -76,11 +76,6 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
 
     #region Equals(MyType?)
 
-    private static readonly MyType NullMyType = null;
-    private static readonly MyType DifferentQuantityMyType = new(DifferentQuantity, TestLabel);
-    private static readonly MyType DifferentLabelMyType = new(TestQuantity, DifferentLabel);
-    private static readonly MyType SameMyType = new(TestQuantity, TestLabel);
-
     [TestMethod]
     [DataRow(nameof(NullMyType), false, DisplayName = "null => false")]
     [DataRow(nameof(DifferentQuantityMyType), false, DisplayName = "Different Quantity => false")]
@@ -99,5 +94,10 @@ public sealed class MyTypeStaticDataTests : MyTypeTests
         // Assert
         Assert.AreEqual(expected, actual);
     }
+
+    private static readonly MyType NullMyType = null;
+    private static readonly MyType DifferentQuantityMyType = new(DifferentQuantity, TestLabel);
+    private static readonly MyType DifferentLabelMyType = new(TestQuantity, DifferentLabel);
+    private static readonly MyType SameMyType = new(TestQuantity, TestLabel);
     #endregion
 }
