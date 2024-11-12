@@ -6,14 +6,14 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
 
     #region Dynamic data test members
 
-    public static IEnumerable<object[]> EqualsMyTypeArgs => DataSources.GetEqualsMyTypeArgs(Framework);
-    public static IEnumerable<object[]> EqualsObjectArgs => DataSources.GetEqualsObjectArgs(Framework);
-    public static IEnumerable<object[]> GetHashCodeArgs => DataSources.GetGetHashCodeArgs(Framework);
+    public static IEnumerable<object[]> EqualsMyTypeArgsList => DataSources.EqualsMyTypeArgsToList(Framework);
+    public static IEnumerable<object[]> EqualsObjectArgsList => DataSources.EqualsObjectArgsToList(Framework);
+    public static IEnumerable<object[]> GetHashCodeArgsList => DataSources.GetHashCodeArgsToList(Framework);
     #endregion
 
     #region Dynamic data test methods
 
-    [Theory, MemberData(nameof(EqualsObjectArgs))]
+    [Theory, MemberData(nameof(EqualsObjectArgsList))]
     public void xUnit_Equals_arg_object_returns_expected(TestData_object testData)
     {
         // Arrange & Act
@@ -23,7 +23,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
         Assert.Equal(testData.Expected, actual);
     }
 
-    [Theory, MemberData(nameof(EqualsMyTypeArgs))]
+    [Theory, MemberData(nameof(EqualsMyTypeArgsList))]
     public void xUnit_Equals_arg_MyType_returns_expected(TestData_MyType testData)
     {
         // Arrange & Act
@@ -33,7 +33,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
         Assert.Equal(testData.Expected, actual);
     }
 
-    [Theory, MemberData(nameof(GetHashCodeArgs))]
+    [Theory, MemberData(nameof(GetHashCodeArgsList))]
     public void xUnit_GetHashCode_returns_expected(TestData_MyType testData)
     {
         // Arrange

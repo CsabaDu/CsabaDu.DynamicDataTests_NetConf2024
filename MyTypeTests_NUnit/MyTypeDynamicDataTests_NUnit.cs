@@ -8,12 +8,12 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
 
     #region Dynamic data test members
 
-    private static IEnumerable<TestCaseData> EqualsMyTypeArgs
-    => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.GetEqualsMyTypeArgs(Framework));
-    private static IEnumerable<TestCaseData> EqualsObjectArgs
-    => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.GetEqualsObjectArgs(Framework));
-    private static IEnumerable<TestCaseData> GetHashCodeArgs
-    => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetGetHashCodeArgs(Framework));
+    private static IEnumerable<TestCaseData> EqualsMyTypeArgsList
+    => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.EqualsMyTypeArgsToList(Framework));
+    private static IEnumerable<TestCaseData> EqualsObjectArgsList
+    => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.EqualsObjectArgsToList(Framework));
+    private static IEnumerable<TestCaseData> GetHashCodeArgsList
+    => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetHashCodeArgsToList(Framework));
 
     private static IEnumerable<TestCaseData> GetTestData(string testMethodName, IEnumerable<object[]> argsList)
     {
@@ -28,7 +28,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
 
     #region Dynamic data test methods
 
-    [TestCaseSource(nameof(EqualsObjectArgs))]
+    [TestCaseSource(nameof(EqualsObjectArgsList))]
     public void NUnit_Equals_object_returns_expected(bool expected, object obj)
     {
         // Arrange & Act
@@ -38,7 +38,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
-    [TestCaseSource(nameof(EqualsMyTypeArgs))]
+    [TestCaseSource(nameof(EqualsMyTypeArgsList))]
     public void NUnit_Equals_MyType_returns_expected(bool expected, MyType other)
     {
         // Arrange & Act
@@ -48,7 +48,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
         Assert.That(actual, Is.EqualTo(expected));
     }
 
-    [TestCaseSource(nameof(GetHashCodeArgs))]
+    [TestCaseSource(nameof(GetHashCodeArgsList))]
     public void NUnit_GetHashCode_returns_expected(bool expected, MyType other)
     {
         // Arrange

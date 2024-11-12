@@ -28,7 +28,7 @@ public class DynamicDataSources : MyTypeTests
 
     #region Dynamic data sources
 
-    public IEnumerable<object[]> GetEqualsObjectArgs(FrameworkCode frameworkCode)
+    public IEnumerable<object[]> EqualsObjectArgsToList(FrameworkCode frameworkCode)
     {
         InitMyTypeElements();
 
@@ -55,7 +55,7 @@ public class DynamicDataSources : MyTypeTests
         object[] argsToObjectArray() => ArgsToObjectArray_object(frameworkCode);
     }
 
-    public IEnumerable<object[]> GetGetHashCodeArgs(FrameworkCode frameworkCode)
+    public IEnumerable<object[]> GetHashCodeArgsToList(FrameworkCode frameworkCode)
     {
         InitMyTypeElements();
 
@@ -79,14 +79,14 @@ public class DynamicDataSources : MyTypeTests
         object[] argsToObjectArray() => ArgsToObjectArray_MyType(frameworkCode);
     }
 
-    public IEnumerable<object[]> GetEqualsMyTypeArgs(FrameworkCode frameworkCode)
+    public IEnumerable<object[]> EqualsMyTypeArgsToList(FrameworkCode frameworkCode)
     {
         _expected = false;
         _testCase = CreateTestCase("null");
         _other = null;
 
         object[] nullMyTypeTestCase = ArgsToObjectArray_MyType(frameworkCode);
-        IEnumerable<object[]> getHashCodeArgs = GetGetHashCodeArgs(frameworkCode);
+        IEnumerable<object[]> getHashCodeArgs = GetHashCodeArgsToList(frameworkCode);
 
         return getHashCodeArgs.Append(nullMyTypeTestCase);
     }
