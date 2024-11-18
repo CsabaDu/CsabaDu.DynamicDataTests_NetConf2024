@@ -2,13 +2,13 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_xUnit;
 
 public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
 {
-    static MyTypeDynamicDataTests_xUnit() => Framework = FrameworkCode.xUnit;
+    static MyTypeDynamicDataTests_xUnit() => ArgsCode = ArgsCode.Instance;
 
     #region Dynamic data test members
 
-    public static IEnumerable<object[]> EqualsMyTypeArgsList => DataSources.EqualsMyTypeArgsToList(Framework);
-    public static IEnumerable<object[]> EqualsObjectArgsList => DataSources.EqualsObjectArgsToList(Framework);
-    public static IEnumerable<object[]> GetHashCodeArgsList => DataSources.GetHashCodeArgsToList(Framework);
+    public static IEnumerable<object[]> EqualsMyTypeArgsList => DataSources.EqualsMyTypeArgsToList(ArgsCode);
+    public static IEnumerable<object[]> EqualsObjectArgsList => DataSources.EqualsObjectArgsToList(ArgsCode);
+    public static IEnumerable<object[]> GetHashCodeArgsList => DataSources.GetHashCodeArgsToList(ArgsCode);
     #endregion
 
     #region Dynamic data test methods

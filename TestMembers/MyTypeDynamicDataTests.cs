@@ -3,7 +3,7 @@
 public abstract class MyTypeDynamicDataTests : MyTypeTests
 {
     protected static readonly DynamicDataSources DataSources = new();
-    protected static FrameworkCode Framework;
+    protected static ArgsCode ArgsCode;
 
     protected static string CreateDisplayName(string testMethodName, object[] args)
     {

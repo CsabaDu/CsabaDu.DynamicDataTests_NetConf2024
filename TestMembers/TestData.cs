@@ -1,37 +1,34 @@
 ﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays
 {
-    public enum FrameworkCode
+    public enum ArgsCode
     {
-        MSTest,
-        NUnit,
-        xUnit,
+        Properties,
+        Instance,
     }
 
     public abstract record TestData(string TestCase, bool Expected)
     {
-        public abstract object[] ToObjectArray(FrameworkCode frameworkCode);
+        public abstract object[] ToObjectArray(ArgsCode argsCode);
 
         public override sealed string ToString() => TestCase;
     }
 
     public record TestData_object(string TestCase, bool Expected, object Obj) : TestData(TestCase, Expected)
     {
-        public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
+        public override object[] ToObjectArray(ArgsCode argsCode) => argsCode switch
         {
-            FrameworkCode.MSTest or
-            FrameworkCode.NUnit => [TestCase, Expected, Obj],
-            FrameworkCode.xUnit => [this],
+            ArgsCode.Properties => [TestCase, Expected, Obj],
+            ArgsCode.Instance => [this],
             _ => null,
         };
     }
 
     public record TestData_MyType(string TestCase, bool Expected, MyType Other) : TestData(TestCase, Expected)
     {
-        public override object[] ToObjectArray(FrameworkCode frameworkCode) => frameworkCode switch
+        public override object[] ToObjectArray(ArgsCode argsCode) => argsCode switch
         {
-            FrameworkCode.MSTest or
-            FrameworkCode.NUnit => [TestCase, Expected, Other],
-            FrameworkCode.xUnit => [this],
+            ArgsCode.Properties => [TestCase, Expected, Other],
+            ArgsCode.Instance => [this],
             _ => null,
         };
     }

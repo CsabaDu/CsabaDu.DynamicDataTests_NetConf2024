@@ -4,16 +4,16 @@ namespace CsabaDu.DynamicDataTests_NetConf2024.MyTypeTests_NUnit;
 public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
 {
     [OneTimeSetUp]
-    public void SetupMyTypeTestsClass() => Framework = FrameworkCode.NUnit;
+    public void SetupMyTypeTestsClass() => ArgsCode = ArgsCode.Properties;
 
     #region Dynamic data test members
 
     private static IEnumerable<TestCaseData> EqualsMyTypeArgsList
-    => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.EqualsMyTypeArgsToList(Framework));
+    => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.EqualsMyTypeArgsToList(ArgsCode));
     private static IEnumerable<TestCaseData> EqualsObjectArgsList
-    => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.EqualsObjectArgsToList(Framework));
+    => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.EqualsObjectArgsToList(ArgsCode));
     private static IEnumerable<TestCaseData> GetHashCodeArgsList
-    => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetHashCodeArgsToList(Framework));
+    => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetHashCodeArgsToList(ArgsCode));
 
     private static IEnumerable<TestCaseData> GetTestData(string testMethodName, IEnumerable<object[]> argsList)
     {

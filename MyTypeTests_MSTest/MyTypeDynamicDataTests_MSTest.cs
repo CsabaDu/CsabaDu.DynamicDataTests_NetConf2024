@@ -4,14 +4,14 @@
 public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
 {
     [ClassInitialize]
-    public static void InitMyTypeTestsClass(TestContext context) => Framework = FrameworkCode.MSTest;
+    public static void InitMyTypeTestsClass(TestContext context) => ArgsCode = ArgsCode.Properties;
 
     #region Dynamic data test members
-    private static IEnumerable<object[]> EqualsMyTypeArgsList => DataSources.EqualsMyTypeArgsToList(Framework);
-    private static IEnumerable<object[]> EqualsObjectArgsList => DataSources.EqualsObjectArgsToList(Framework);
-    private static IEnumerable<object[]> GetHashCodeArgsList => DataSources.GetHashCodeArgsToList(Framework);
+    private static IEnumerable<object[]> EqualsMyTypeArgsList => DataSources.EqualsMyTypeArgsToList(ArgsCode);
+    private static IEnumerable<object[]> EqualsObjectArgsList => DataSources.EqualsObjectArgsToList(ArgsCode);
+    private static IEnumerable<object[]> GetHashCodeArgsList => DataSources.GetHashCodeArgsToList(ArgsCode);
 
-    private const string DisplayName = nameof(GetDisplayName);
+    private const string TestName = nameof(GetDisplayName);
 
     public static string GetDisplayName(MethodInfo testMethod, object[] args)
         => CreateDisplayName(testMethod.Name, args);
@@ -19,7 +19,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
 
     #region Dynamic data test methods
 
-    [TestMethod, DynamicData(nameof(EqualsObjectArgsList), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
+    [TestMethod, DynamicData(nameof(EqualsObjectArgsList), DynamicDataSourceType.Property, DynamicDataDisplayName = TestName)]
     public void MSTest_Equals_arg_object_returns_expected(string testCase, bool expected, object obj)
     {
         // Arrange & Act
@@ -29,7 +29,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
         Assert.AreEqual(expected, actual);
     }
 
-    [TestMethod, DynamicData(nameof(EqualsMyTypeArgsList), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
+    [TestMethod, DynamicData(nameof(EqualsMyTypeArgsList), DynamicDataSourceType.Property, DynamicDataDisplayName = TestName)]
     public void MSTest_Equals_arg_MyType_returns_expected(string testCase, bool expected, MyType other)
     {
         // Arrange & Act
@@ -39,7 +39,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
         Assert.AreEqual(expected, actual);
     }
 
-    [TestMethod, DynamicData(nameof(GetHashCodeArgsList), DynamicDataSourceType.Property, DynamicDataDisplayName = DisplayName)]
+    [TestMethod, DynamicData(nameof(GetHashCodeArgsList), DynamicDataSourceType.Property, DynamicDataDisplayName = TestName)]
     public void MSTest_GetHashCode_returns_expected(string testCase, bool expected, MyType other)
     {
         // Arrange

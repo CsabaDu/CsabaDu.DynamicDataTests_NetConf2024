@@ -13,22 +13,22 @@ public class DynamicDataSources : MyTypeTests
         return $"{paramsDescription} => {expectedToString}";
     }
 
-    private object[] ArgsToObjectArray_object(FrameworkCode frameworkCode)
+    private object[] ArgsToObjectArray_object(ArgsCode argsCode)
     {
         TestData_object args = new(_testCase, _expected, _obj);
-        return args.ToObjectArray(frameworkCode);
+        return args.ToObjectArray(argsCode);
     }
 
-    private object[] ArgsToObjectArray_MyType(FrameworkCode frameworkCode)
+    private object[] ArgsToObjectArray_MyType(ArgsCode argsCode)
     {
         TestData_MyType args = new(_testCase, _expected, _other);
-        return args.ToObjectArray(frameworkCode);
+        return args.ToObjectArray(argsCode);
     }
     #endregion
 
     #region Dynamic data sources
 
-    public IEnumerable<object[]> EqualsObjectArgsToList(FrameworkCode frameworkCode)
+    public IEnumerable<object[]> EqualsObjectArgsToList(ArgsCode argsCode)
     {
         InitMyTypeElements();
 
@@ -52,10 +52,10 @@ public class DynamicDataSources : MyTypeTests
         _obj = GetMyType();
         yield return argsToObjectArray();
 
-        object[] argsToObjectArray() => ArgsToObjectArray_object(frameworkCode);
+        object[] argsToObjectArray() => ArgsToObjectArray_object(argsCode);
     }
 
-    public IEnumerable<object[]> GetHashCodeArgsToList(FrameworkCode frameworkCode)
+    public IEnumerable<object[]> GetHashCodeArgsToList(ArgsCode argsCode)
     {
         InitMyTypeElements();
 
@@ -76,17 +76,17 @@ public class DynamicDataSources : MyTypeTests
         _other = GetMyType();
         yield return argsToObjectArray();
 
-        object[] argsToObjectArray() => ArgsToObjectArray_MyType(frameworkCode);
+        object[] argsToObjectArray() => ArgsToObjectArray_MyType(argsCode);
     }
 
-    public IEnumerable<object[]> EqualsMyTypeArgsToList(FrameworkCode frameworkCode)
+    public IEnumerable<object[]> EqualsMyTypeArgsToList(ArgsCode argsCode)
     {
         _expected = false;
         _testCase = CreateTestCase("null");
         _other = null;
 
-        object[] nullMyTypeTestCase = ArgsToObjectArray_MyType(frameworkCode);
-        IEnumerable<object[]> getHashCodeArgs = GetHashCodeArgsToList(frameworkCode);
+        object[] nullMyTypeTestCase = ArgsToObjectArray_MyType(argsCode);
+        IEnumerable<object[]> getHashCodeArgs = GetHashCodeArgsToList(argsCode);
 
         return getHashCodeArgs.Append(nullMyTypeTestCase);
     }
