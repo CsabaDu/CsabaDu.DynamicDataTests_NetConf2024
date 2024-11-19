@@ -7,10 +7,10 @@ public class DynamicDataSources : MyTypeTests
     private string _testCase;
     private bool _expected;
 
-    private string CreateTestCase(string paramsDescription)
+    private void InitTestCase(string paramsDescription)
     {
         string expectedToString = _expected.ToString();
-        return $"{paramsDescription} => {expectedToString}";
+        _testCase = $"{paramsDescription} => {expectedToString}";
     }
 
     private object[] ArgsToObjectArray_object(ArgsCode argsCode)
@@ -33,20 +33,20 @@ public class DynamicDataSources : MyTypeTests
         InitMyTypeElements();
 
         _expected = true;
-        _testCase = CreateTestCase("Same MyType");
+        InitTestCase("Same MyType");
         _obj = GetMyType();
         yield return argsToObjectArray();
 
         _expected = false;
-        _testCase = CreateTestCase("null");
+        InitTestCase("null");
         _obj = null;
         yield return argsToObjectArray();
 
-        _testCase = CreateTestCase("object");
+        InitTestCase("object");
         _obj = new();
         yield return argsToObjectArray();
 
-        _testCase = CreateTestCase("Different MyType");
+        InitTestCase("Different MyType");
         _quantity = DifferentQuantity;
         _label = DifferentLabel;
         _obj = GetMyType();
@@ -60,17 +60,17 @@ public class DynamicDataSources : MyTypeTests
         InitMyTypeElements();
 
         _expected = true;
-        _testCase = CreateTestCase("Same Quantity, same Label");
+        InitTestCase("Same Quantity, same Label");
         _other = GetMyType();
         yield return argsToObjectArray();
 
         _expected = false;
-        _testCase = CreateTestCase("Different Quantity, same Label");
+        InitTestCase("Different Quantity, same Label");
         _quantity = DifferentQuantity;
         _other = GetMyType();
         yield return argsToObjectArray();
 
-        _testCase = CreateTestCase("Same Quantity, different Label");
+        InitTestCase("Same Quantity, different Label");
         _quantity = TestQuantity;
         _label = DifferentLabel;
         _other = GetMyType();
@@ -82,7 +82,7 @@ public class DynamicDataSources : MyTypeTests
     public IEnumerable<object[]> EqualsMyTypeArgsToList(ArgsCode argsCode)
     {
         _expected = false;
-        _testCase = CreateTestCase("null");
+        InitTestCase("null");
         _other = null;
 
         object[] nullMyTypeTestCase = ArgsToObjectArray_MyType(argsCode);
