@@ -2,7 +2,7 @@
 
 public abstract class MyTypeDynamicDataTests : MyTypeTests
 {
-    public static ArgsCode ArgsCode { protected get; set; }
+    protected static ArgsCode ArgsCode { get; set; }
 
     protected static readonly DynamicDataSources DataSources = new();
 
