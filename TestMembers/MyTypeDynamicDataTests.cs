@@ -2,8 +2,9 @@
 
 public abstract class MyTypeDynamicDataTests : MyTypeTests
 {
+    public static ArgsCode ArgsCode { protected get; set; }
+
     protected static readonly DynamicDataSources DataSources = new();
-    protected static ArgsCode ArgsCode;
 
     protected static string CreateDisplayName(string testMethodName, object[] args)
     {

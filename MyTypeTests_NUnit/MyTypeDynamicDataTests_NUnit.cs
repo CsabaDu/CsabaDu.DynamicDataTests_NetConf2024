@@ -9,19 +9,19 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
     #region Dynamic data test members
 
     private static IEnumerable<TestCaseData> EqualsMyTypeArgsList
-    => GetTestData(nameof(NUnit_Equals_MyType_returns_expected), DataSources.EqualsMyTypeArgsToList(ArgsCode));
+    => GetDataList(nameof(NUnit_Equals_MyType_returns_expected), DataSources.EqualsMyTypeArgsToList(ArgsCode));
     private static IEnumerable<TestCaseData> EqualsObjectArgsList
-    => GetTestData(nameof(NUnit_Equals_object_returns_expected), DataSources.EqualsObjectArgsToList(ArgsCode));
+    => GetDataList(nameof(NUnit_Equals_object_returns_expected), DataSources.EqualsObjectArgsToList(ArgsCode));
     private static IEnumerable<TestCaseData> GetHashCodeArgsList
-    => GetTestData(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetHashCodeArgsToList(ArgsCode));
+    => GetDataList(nameof(NUnit_GetHashCode_returns_expected), DataSources.GetHashCodeArgsToList(ArgsCode));
 
-    private static IEnumerable<TestCaseData> GetTestData(string testMethodName, IEnumerable<object[]> argsList)
+    private static IEnumerable<TestCaseData> GetDataList(string testMethodName, IEnumerable<object[]> argsList)
     {
         foreach (object[] args in argsList)
         {
             string displayName = CreateDisplayName(testMethodName, args);
-            TestCaseData testData = new(args[1..]);
-            yield return testData.SetName(displayName);
+            TestCaseData data = new(args[1..]);
+            yield return data.SetName(displayName);
         }
     }
     #endregion

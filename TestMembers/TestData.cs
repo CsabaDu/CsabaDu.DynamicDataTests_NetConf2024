@@ -8,14 +8,14 @@
 
     public abstract record TestData(string TestCase, bool Expected)
     {
-        public abstract object[] ToObjectArray(ArgsCode argsCode);
+        public abstract object[] ToArgs(ArgsCode argsCode);
 
         public override sealed string ToString() => TestCase;
     }
 
     public record TestData_object(string TestCase, bool Expected, object Obj) : TestData(TestCase, Expected)
     {
-        public override object[] ToObjectArray(ArgsCode argsCode) => argsCode switch
+        public override object[] ToArgs(ArgsCode argsCode) => argsCode switch
         {
             ArgsCode.Properties => [TestCase, Expected, Obj],
             ArgsCode.Instance => [this],
@@ -25,7 +25,7 @@
 
     public record TestData_MyType(string TestCase, bool Expected, MyType Other) : TestData(TestCase, Expected)
     {
-        public override object[] ToObjectArray(ArgsCode argsCode) => argsCode switch
+        public override object[] ToArgs(ArgsCode argsCode) => argsCode switch
         {
             ArgsCode.Properties => [TestCase, Expected, Other],
             ArgsCode.Instance => [this],
