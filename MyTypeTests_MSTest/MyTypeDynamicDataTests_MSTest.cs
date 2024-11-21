@@ -14,7 +14,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     private const string TestName = nameof(GetDisplayName);
 
     public static string GetDisplayName(MethodInfo testMethod, object[] args)
-        => CreateDisplayName(testMethod.Name, args);
+    => CreateDisplayName(testMethod.Name, args);
     #endregion
 
     #region Dynamic data test methods
