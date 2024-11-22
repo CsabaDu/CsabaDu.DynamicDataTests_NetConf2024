@@ -12,7 +12,7 @@ public abstract class MyTypeDynamicDataTests : MyTypeTests
         {
             TestData testData => testData.TestCase,
             string testCaseName => testCaseName,
-            _ => string.Empty,
+            _ => string.Join(", ", args.Select(obj => obj.ToString())),
         };
 
         return $"{testMethodName}: {testCase}";
