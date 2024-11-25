@@ -12,10 +12,10 @@ public abstract class MyTypeDynamicDataTests : MyTypeTests
         {
             TestData testData => createDisplayName(testData.TestCase),
             string testCase => createDisplayName(testCase),
-            _ => createDisplayName(createTestCase()),
+            _ => createDisplayName(createGeneralTestCase()),
         };
 
         string createDisplayName(string testCase) => $"{testMethodName}: {testCase}";
-        string createTestCase() => string.Join(", ", args.Select(arg => arg.ToString()));
+        string createGeneralTestCase() => string.Join(", ", args.Select(arg => arg.ToString()));
     }
 }
