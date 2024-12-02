@@ -8,14 +8,13 @@ public abstract class MyTypeDynamicDataTests : MyTypeTests
 
     protected static string CreateDisplayName(string testMethodName, object[] args)
     {
-        return args[0] switch
-        {
-            TestData testData => createDisplayName(testData.TestCase),
-            string testCase => createDisplayName(testCase),
-            _ => createDisplayName(createGeneralTestCase()),
-        };
+        return $"{testMethodName}: {getTestCase()}";
 
-        string createDisplayName(string testCase) => $"{testMethodName}: {testCase}";
-        string createGeneralTestCase() => string.Join(", ", args.Select(arg => arg.ToString()));
+        string getTestCase() => args[0] switch
+        {
+            TestData testData => testData.TestCase,
+            string testCase  => testCase,
+            _ => string.Join(", ", args.Select(arg => arg.ToString())),
+        };
     }
 }
