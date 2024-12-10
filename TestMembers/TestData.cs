@@ -1,4 +1,4 @@
-﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers.ArgsArrays
+﻿namespace CsabaDu.DynamicDataTests_NetConf2024.TestMembers
 {
     public enum ArgsCode
     {
