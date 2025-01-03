@@ -3,8 +3,8 @@
 public abstract record TestData<T>(string ParamsDescription) where T : notnull
 {
     public string TestCase => $"{ParamsDescription} => {Result}";
-    protected abstract string Result { get; }
     public override sealed string ToString() => TestCase;
+    protected abstract string Result { get; }
 
     public virtual object[] ToArgs(ArgsCode argsCode) => argsCode switch
     {
