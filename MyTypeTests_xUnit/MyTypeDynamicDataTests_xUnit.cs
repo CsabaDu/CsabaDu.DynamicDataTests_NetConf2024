@@ -14,7 +14,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
     #region Dynamic data test methods
 
     [Theory, MemberData(nameof(EqualsObjectArgsList))]
-    public void xUnit_Equals_arg_object_returns_expected(TestDataReturns_object testData)
+    public void xUnit_Equals_arg_object_returns_expected(TestData_object_returns_bool testData)
     {
         // Arrange & Act
         var actual = _myType.Equals(testData.Obj);
@@ -24,7 +24,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
     }
 
     [Theory, MemberData(nameof(EqualsMyTypeArgsList))]
-    public void xUnit_Equals_arg_MyType_returns_expected(TestDataReturns_MyType testData)
+    public void xUnit_Equals_arg_MyType_returns_expected(TestData_MyType_returns_bool testData)
     {
         // Arrange & Act
         var actual = _myType.Equals(testData.Other);
@@ -34,7 +34,7 @@ public sealed class MyTypeDynamicDataTests_xUnit : MyTypeDynamicDataTests
     }
 
     [Theory, MemberData(nameof(GetHashCodeArgsList))]
-    public void xUnit_GetHashCode_returns_expected(TestDataReturns_MyType testData)
+    public void xUnit_GetHashCode_returns_expected(TestData_MyType_returns_bool testData)
     {
         // Arrange
         InitHashCodes(testData.Other);

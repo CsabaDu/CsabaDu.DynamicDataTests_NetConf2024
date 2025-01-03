@@ -7,8 +7,8 @@ public class DynamicDataSources : MyTypeTests
     private string _paramsDescription;
     private bool _expected;
 
-    private TestDataReturns_object TestData_object => new(_paramsDescription, _expected, _obj);
-    private TestDataReturns_MyType TestData_MyType => new(_paramsDescription, _expected, _other);
+    private TestData_object_returns_bool TestData_object_returns_bool => new(_paramsDescription, _expected, _obj);
+    private TestData_MyType_returns_bool TestData_MyType_returns_bool => new(_paramsDescription, _expected, _other);
     #endregion
 
     #region Dynamic data sources
@@ -37,7 +37,7 @@ public class DynamicDataSources : MyTypeTests
         _obj = GetMyType();
         yield return testDataToArgs();
 
-        object[] testDataToArgs() => TestData_object.ToArgs(argsCode);
+        object[] testDataToArgs() => TestData_object_returns_bool.ToArgs(argsCode);
     }
 
     public IEnumerable<object[]> GetHashCodeArgsToList(ArgsCode argsCode)
@@ -61,7 +61,7 @@ public class DynamicDataSources : MyTypeTests
         _other = GetMyType();
         yield return testDataToArgs();
 
-        object[] testDataToArgs() => TestData_MyType.ToArgs(argsCode);
+        object[] testDataToArgs() => TestData_MyType_returns_bool.ToArgs(argsCode);
     }
 
     public IEnumerable<object[]> EqualsMyTypeArgsToList(ArgsCode argsCode)
@@ -70,7 +70,7 @@ public class DynamicDataSources : MyTypeTests
         _paramsDescription = "null";
         _other = null;
 
-        object[] nullMyTypeArgs = TestData_MyType.ToArgs(argsCode);
+        object[] nullMyTypeArgs = TestData_MyType_returns_bool.ToArgs(argsCode);
         IEnumerable<object[]> getHashCodeArgsList = GetHashCodeArgsToList(argsCode);
 
         return getHashCodeArgsList.Append(nullMyTypeArgs);
