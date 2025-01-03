@@ -7,9 +7,8 @@ public class DynamicDataSources : MyTypeTests
     private string _paramsDescription;
     private bool _expected;
 
-    private string TestCase => $"{_paramsDescription} => {_expected.ToString()}";
-    private TestData_object TestData_object => new(TestCase, _expected, _obj);
-    private TestData_MyType TestData_MyType => new(TestCase, _expected, _other);
+    private TestDataReturns_object TestData_object => new(_paramsDescription, _expected, _obj);
+    private TestDataReturns_MyType TestData_MyType => new(_paramsDescription, _expected, _other);
     #endregion
 
     #region Dynamic data sources
