@@ -7,8 +7,8 @@ public class DynamicDataSources : MyTypeTests
     private string _paramsDescription;
     private bool _expected;
 
-    private TestData_object_returns_bool TestData_object_returns_bool => new(_paramsDescription, _expected, _obj);
-    private TestData_MyType_returns_bool TestData_MyType_returns_bool => new(_paramsDescription, _expected, _other);
+    private TestData_object_returns_bool TestData_object_returns_bool => new(_paramsDescription, _obj, _expected);
+    private TestData_MyType_returns_bool TestData_MyType_returns_bool => new(_paramsDescription, _other, _expected);
     #endregion
 
     #region Dynamic data sources

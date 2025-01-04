@@ -29,7 +29,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
     #region Dynamic data test methods
 
     [TestCaseSource(nameof(EqualsObjectArgsList))]
-    public void NUnit_Equals_object_returns_expected(bool expected, object obj)
+    public void NUnit_Equals_object_returns_expected(object obj, bool expected)
     {
         // Arrange & Act
         var actual = _myType.Equals(obj);
@@ -39,7 +39,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
     }
 
     [TestCaseSource(nameof(EqualsMyTypeArgsList))]
-    public void NUnit_Equals_MyType_returns_expected(bool expected, MyType other)
+    public void NUnit_Equals_MyType_returns_expected(MyType other, bool expected)
     {
         // Arrange & Act
         var actual = _myType.Equals(other);
@@ -49,7 +49,7 @@ public sealed class MyTypeDynamicDataTests_NUnit : MyTypeDynamicDataTests
     }
 
     [TestCaseSource(nameof(GetHashCodeArgsList))]
-    public void NUnit_GetHashCode_returns_expected(bool expected, MyType other)
+    public void NUnit_GetHashCode_returns_expected(MyType other, bool expected)
     {
         // Arrange
         InitHashCodes(other);

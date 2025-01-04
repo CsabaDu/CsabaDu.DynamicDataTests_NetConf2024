@@ -20,7 +20,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     #region Dynamic data test methods
 
     [TestMethod, DynamicData(nameof(EqualsObjectArgsList), DynamicDataDisplayName = DisplayName)]
-    public void MSTest_Equals_arg_object_returns_expected(string testCase, bool expected, object obj)
+    public void MSTest_Equals_arg_object_returns_expected(string testCase, object obj, bool expected)
     {
         // Arrange & Act
         var actual = _myType.Equals(obj);
@@ -30,7 +30,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     }
 
     [TestMethod, DynamicData(nameof(EqualsMyTypeArgsList), DynamicDataDisplayName = DisplayName)]
-    public void MSTest_Equals_arg_MyType_returns_expected(string testCase, bool expected, MyType other)
+    public void MSTest_Equals_arg_MyType_returns_expected(string testCase, MyType other, bool expected)
     {
         // Arrange & Act
         var actual = _myType.Equals(other);
@@ -40,7 +40,7 @@ public sealed class MyTypeDynamicDataTests_MSTest : MyTypeDynamicDataTests
     }
 
     [TestMethod, DynamicData(nameof(GetHashCodeArgsList), DynamicDataDisplayName = DisplayName)]
-    public void MSTest_GetHashCode_returns_expected(string testCase, bool expected, MyType other)
+    public void MSTest_GetHashCode_returns_expected(string testCase, MyType other, bool expected)
     {
         // Arrange
         InitHashCodes(other);
