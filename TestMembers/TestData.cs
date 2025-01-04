@@ -13,5 +13,5 @@
         };
     }
 
-    public abstract record TestData<T>(string ParamsDescription) : TestData(ParamsDescription) where T : notnull;
+    public abstract record TestData<TResult>(string ParamsDescription) : TestData(ParamsDescription) where TResult : notnull;
 }
